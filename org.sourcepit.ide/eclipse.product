@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Sourcepit.org IDE" uid="srcpit-eclipse" id="org.sourcepit.ide.product" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Sourcepit.org IDE" uid="eclipse-srcpit" id="org.sourcepit.ide.product" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.eclipse.platform/eclipse_lg.gif"/>

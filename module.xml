@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.sourcepit</groupId>
+		<artifactId>srcpit-parent</artifactId>
+		<version>8-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>srcpit-ide</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<tycho.version>0.16.0</tycho.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>e43</id>
+			<url>http://download.eclipse.org/eclipse/updates/4.3-I-builds</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>juno</id>
+			<url>http://download.eclipse.org/releases/juno</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>ajdt</id>
+			<url>http://download.eclipse.org/tools/ajdt/42/update</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>m2e</id>
+			<url>http://download.eclipse.org/technology/m2e/releases</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>eGit</id>
+			<url>http://download.eclipse.org/egit/updates</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>subversive</id>
+			<url>http://community.polarion.com/projects/subversive/download/eclipse/3.0/juno-site</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>m2e-ajdt</id>
+			<url>http://dist.springsource.org/release/AJDT/configurator</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>m2e-jdt</id>
+			<url>http://download.jboss.org/jbosstools/updates/m2e-extensions/m2e-jdt-compiler</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>m2e-egit</id>
+			<url>http://repository.tesla.io:8081/nexus/content/sites/m2e.extras/m2eclipse-egit/0.14.0/N/0.14.0.201207041402/</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>m2e-tycho</id>
+			<url>http://repository.tesla.io:8081/nexus/content/sites/m2e.extras/m2eclipse-tycho/0.6.0/N/0.6.0.201210231015/</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>m2e-subversive</id>
+			<url>http://repository.tesla.io:8081/nexus/content/sites/m2e.extras/m2eclipse-subversive/0.13.0/N/0.13.0.201208191312/</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>m2e-modello</id>
+			<url>http://repository.tesla.io:8081/nexus/content/sites/m2e.extras/m2eclipse-modello/0.15.0/N/0.15.0.201207090125/</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>m2e-antlr</id>
+			<url>http://repository.tesla.io:8081/nexus/content/sites/m2e.extras/m2eclipse-antlr/0.15.0/N/0.15.0.201207090124/</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>m2e-buildhelper</id>
+			<url>http://repository.tesla.io:8081/nexus/content/sites/m2e.extras/m2eclipse-buildhelper/0.15.0/N/0.15.0.201207090124/</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>m2e-mavenarchiver</id>
+			<url>http://repository.tesla.io:8081/nexus/content/sites/m2e.extras/m2eclipse-mavenarchiver/0.15.0/N/0.15.0.201207090125/</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>m2e-plexus</id>
+			<url>http://repository.tesla.io:8081/nexus/content/sites/m2e.extras/m2eclipse-plexus/0.15.0/N/0.15.0.201207090126/</url>
+			<layout>p2</layout>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>b2-releases</id>
+			<url>file:////${user.home}/repository/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>b2-snapshots</id>
+			<url>file:////${user.home}/repository/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.sourcepit.b2</groupId>
+				<artifactId>b2-maven-plugin</artifactId>
+				<version>0.1.0-SNAPSHOT</version>
+			</extension>
+		</extensions>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-surefire-plugin</artifactId>
+					<version>${tycho.version}</version>
+					<configuration>
+						<argLine>-Xms128m -Xmx256m -XX:MaxPermSize=192m</argLine>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+					<environments>
+						<!-- <environment> -->
+						<!-- <os>linux</os> -->
+						<!-- <ws>gtk</ws> -->
+						<!-- <arch>x86_64</arch> -->
+						<!-- </environment> -->
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

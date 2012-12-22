@@ -16,7 +16,7 @@
 	<repositories>
 		<repository>
 			<id>e43</id>
-			<url>http://download.eclipse.org/eclipse/updates/4.3-I-builds</url>
+			<url>http://artfiles.org/eclipse.org//eclipse/updates/4.3milestones/S-4.3M3-201210312000</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>
@@ -112,7 +112,7 @@
 			<extension>
 				<groupId>org.sourcepit.b2</groupId>
 				<artifactId>b2-maven-plugin</artifactId>
-				<version>0.1.0-SNAPSHOT</version>
+				<version>0.1.0-alpha-5</version>
 			</extension>
 		</extensions>
 		<pluginManagement>

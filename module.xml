@@ -16,7 +16,7 @@
 	<repositories>
 		<repository>
 			<id>e43</id>
-			<url>http://artfiles.org/eclipse.org//eclipse/updates/4.3milestones/S-4.3M3-201210312000</url>
+			<url>http://artfiles.org/eclipse.org//eclipse/updates/4.3milestones/S-4.3M4-201212140730</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>

@@ -15,7 +15,8 @@
 	<repositories>
 		<repository>
 			<id>e43</id>
-			<url>http://artfiles.org/eclipse.org/eclipse/updates/4.3milestones</url>
+			<url>http://download.eclipse.org/eclipse/updates/4.3milestones/S-4.3M7-201305020800</url>
+			<!-- <url>http://artfiles.org/eclipse.org/eclipse/updates/4.3milestones</url> -->
 			<layout>p2</layout>
 		</repository>
 		<repository>
@@ -24,7 +25,13 @@
 			<layout>p2</layout>
 		</repository>
 		<repository>
+			<id>kepler</id>
+			<url>http://download.eclipse.org/releases/kepler</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
 			<id>ajdt</id>
+			<!-- <url>http://download.eclipse.org/tools/ajdt/43/dev/update</url> -->
 			<url>http://download.eclipse.org/tools/ajdt/42/update</url>
 			<layout>p2</layout>
 		</repository>

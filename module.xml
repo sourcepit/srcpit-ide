@@ -15,8 +15,7 @@
 	<repositories>
 		<repository>
 			<id>e43</id>
-			<url>http://download.eclipse.org/eclipse/updates/4.3milestones/S-4.3M7-201305020800</url>
-			<!-- <url>http://artfiles.org/eclipse.org/eclipse/updates/4.3milestones</url> -->
+			<url>http://download.eclipse.org/eclipse/updates/4.3milestones/S-4.3RC3-201305301430</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>
@@ -68,7 +67,7 @@
 		</repository>
 		<repository>
 			<id>m2e-egit</id>
-			<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-egit/0.14.0/N/0.14.0.201207041402/</url>
+			<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-egit/0.14.0/N/0.14.0.201305250025/</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>

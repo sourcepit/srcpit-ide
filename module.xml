@@ -14,30 +14,13 @@
 
 	<repositories>
 		<repository>
-			<id>e43</id>
-			<url>http://download.eclipse.org/eclipse/updates/4.3milestones/S-4.3RC3-201305301430</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>juno</id>
-			<url>http://download.eclipse.org/releases/juno</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
 			<id>kepler</id>
 			<url>http://download.eclipse.org/releases/kepler</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>
 			<id>ajdt</id>
-			<!-- <url>http://download.eclipse.org/tools/ajdt/43/dev/update</url> -->
-			<url>http://download.eclipse.org/tools/ajdt/42/update</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>m2e</id>
-			<!-- <url>http://download.eclipse.org/technology/m2e/releases</url> -->
-			<url>http://download.eclipse.org/technology/m2e/milestones/1.4</url>
+			<url>http://download.eclipse.org/tools/ajdt/43/dev/update</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>
@@ -47,7 +30,7 @@
 		</repository>
 		<repository>
 			<id>subversive</id>
-			<url>http://community.polarion.com/projects/subversive/download/eclipse/3.0/juno-site</url>
+			<url>http://community.polarion.com/projects/subversive/download/eclipse/3.0/kepler-site/</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>
@@ -105,11 +88,11 @@
 			<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-plexus/0.15.0/N/0.15.0.201302101151/</url>
 			<layout>p2</layout>
 		</repository>
-		<repository>
-			<id>m2e-checkstyle</id>
-			<url>http://m2e-code-quality.github.com/m2e-code-quality/site/1.0/</url>
-			<layout>p2</layout>
-		</repository>
+		<!-- <repository> -->
+		<!-- <id>m2e-checkstyle</id> -->
+		<!-- <url>http://m2e-code-quality.github.com/m2e-code-quality/site/1.0/</url> -->
+		<!-- <layout>p2</layout> -->
+		<!-- </repository> -->
 	</repositories>
 
 	<distributionManagement>

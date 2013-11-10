@@ -9,7 +9,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<tycho.version>0.16.0</tycho.version>
+		<tycho.version>0.18.1</tycho.version>
 	</properties>
 
 	<repositories>
@@ -55,7 +55,7 @@
 		</repository>
 		<repository>
 			<id>m2e-tycho</id>
-			<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.7.0/N/0.7.0.201302171659/</url>
+			<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.7.0/N/0.7.0.201309291400/</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>
@@ -85,7 +85,7 @@
 		</repository>
 		<repository>
 			<id>m2e-plexus</id>
-			<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-plexus/0.15.0/N/0.15.0.201302101151/</url>
+			<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-plexus/0.15.0/N/0.15.0.201207090126/</url>
 			<layout>p2</layout>
 		</repository>
 		<!-- <repository> -->
@@ -111,7 +111,7 @@
 			<extension>
 				<groupId>org.sourcepit.b2</groupId>
 				<artifactId>b2-maven-plugin</artifactId>
-				<version>0.1.0-alpha-8</version>
+				<version>0.1.0-alpha-10</version>
 			</extension>
 		</extensions>
 		<pluginManagement>

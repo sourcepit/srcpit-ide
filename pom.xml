@@ -1,10 +1,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.sourcepit</groupId>
+
+	<parent>
+		<groupId>org.sourcepit</groupId>
+		<artifactId>srcpit-parent</artifactId>
+		<version>10</version>
+	</parent>
+
 	<artifactId>srcpit-ide</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
+
+	<properties>
+		<os>win32</os>
+		<ws>win32</ws>
+		<arch>x86_64</arch>
+		<classifier>${os}.${ws}.${arch}</classifier>
+		<distName>${project.artifactId}-${project.version}-${classifier}</distName>
+		<distDir>${project.build.directory}/${distName}</distDir>
+	</properties>
 
 	<build>
 		<plugins>
@@ -19,6 +34,7 @@
 							<goal>install</goal>
 						</goals>
 						<configuration>
+							<destination>${distDir}</destination>
 							<repositories>
 								<repository>
 									<id>kepler</id>
@@ -127,6 +143,9 @@
 								<iu>org.sonatype.m2e.mavenarchiver.feature.feature.group</iu>
 								<iu>org.sonatype.m2e.plexus.annotations.feature.feature.group</iu>
 							</installIUs>
+							<os>${os}</os>
+							<ws>${ws}</ws>
+							<arch>${arch}</arch>
 							<eclipseIni>
 								<appArgs>
 									<prepend>
@@ -149,22 +168,37 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.7</version>
 				<executions>
 					<execution>
+						<id>copy-plugin_customization.ini</id>
 						<phase>prepare-package</phase>
-						<configuration>
-							<target>
-								<copy file="${basedir}/src/main/resources/plugin_customization.ini" toDir="${project.build.directory}/eclipse" />
-							</target>
-						</configuration>
 						<goals>
 							<goal>run</goal>
 						</goals>
+						<configuration>
+							<target>
+								<copy file="${basedir}/src/main/resources/plugin_customization.ini" toDir="${distDir}" />
+							</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>zip-dist</id>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<zip destfile="${project.build.directory}/${distName}.zip">
+									<zipfileset dir="${distDir}" prefix="${distName}" />
+								</zip>
+								<attachartifact file="${project.build.directory}/${distName}.zip" classifier="${classifier}"
+									type="zip" />
+							</target>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

@@ -1,5 +1,4 @@
-/.b2
 /.settings
 /.project
-/.pom
-/pom.xml
+/target
+/bin

@@ -142,6 +142,7 @@
 								<iu>org.sonatype.m2e.antlr.feature.feature.group</iu>
 								<iu>org.sonatype.m2e.mavenarchiver.feature.feature.group</iu>
 								<iu>org.sonatype.m2e.plexus.annotations.feature.feature.group</iu>
+								<iu>org.sonatype.m2e.buildhelper.feature.feature.group</iu>
 							</installIUs>
 							<os>${os}</os>
 							<ws>${ws}</ws>

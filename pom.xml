@@ -99,6 +99,14 @@
 									<url>http://pluginbox.sourceforge.net/</url>
 								</repository>
 								<repository>
+									<id>m2e-mavendev</id>
+									<url>http://repo1.maven.org/maven2/.m2e/connectors/mavendev/0.2.0/N/0.2.0.201402012149/</url>
+								</repository>
+								<repository>
+									<id>m2e-sourcelookup</id>
+									<url>http://repo1.maven.org/maven2/.m2e/connectors/sourcelookup/1.1.0/N/1.1.0.201402131627/</url>
+								</repository>
+								<repository>
 									<id>m2e-ajdt</id>
 									<url>http://dist.springsource.org/release/AJDT/configurator</url>
 								</repository>
@@ -164,6 +172,7 @@
 								<iu>org.eclipse.m2e.sdk.feature.feature.group</iu>
 
 								<!-- m2e connectors (misc) -->
+								<iu>com.ifedorenko.m2e.mavendev.feature.feature.group</iu>
 								<iu>org.sonatype.tycho.m2e.feature.feature.group</iu>
 								<iu>org.sonatype.m2e.modello.feature.feature.group</iu>
 								<iu>org.sonatype.m2e.antlr.feature.feature.group</iu>

@@ -51,7 +51,7 @@
 			<plugin>
 				<groupId>org.sourcepit.m2p2</groupId>
 				<artifactId>m2p2-director-maven-plugin</artifactId>
-				<version>0.4.0</version>
+				<version>0.5.0</version>
 				<executions>
 					<execution>
 						<phase>prepare-package</phase>
@@ -147,9 +147,9 @@
 									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-plexus/0.15.0/N/0.15.0.201405271722/</url>
 								</repository>
 								<repository>
-                                    <id>m2e-sisu</id>
-                                    <url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-sisu/0.15.0/N/0.15.0.201405271721/</url>
-                                </repository>
+									<id>m2e-sisu</id>
+									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-sisu/0.15.0/N/0.15.0.201405271721/</url>
+								</repository>
 								<repository>
 									<id>m2e-checkstyle</id>
 									<url>http://m2e-code-quality.github.com/m2e-code-quality/site/latest/</url>
@@ -159,9 +159,9 @@
 									<url>file:///${project.build.directory}/sites/b2eclipse</url>
 								</repository>
 								<repository>
-                                    <id>workspacemechanic</id>
-                                    <url>http://workspacemechanic.eclipselabs.org.codespot.com/git.update/mechanic</url>
-                                </repository>
+									<id>workspacemechanic</id>
+									<url>http://workspacemechanic.eclipselabs.org.codespot.com/git.update/mechanic</url>
+								</repository>
 							</repositories>
 							<installIUs>
 								<!-- Eclipse Platform -->

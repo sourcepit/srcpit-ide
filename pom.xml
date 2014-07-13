@@ -239,6 +239,7 @@
 							<os>${os}</os>
 							<ws>${ws}</ws>
 							<arch>${arch}</arch>
+							<roaming>true</roaming>
 							<eclipseIni>
 								<appArgs>
 									<prepend>

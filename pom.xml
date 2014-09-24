@@ -43,6 +43,14 @@
 									<type>zip</type>
 									<outputDirectory>${project.build.directory}/sites/b2eclipse</outputDirectory>
 								</artifactItem>
+								<artifactItem>
+									<groupId>org.sourcepit</groupId>
+									<artifactId>jdt-template-variables</artifactId>
+									<version>0.2.0</version>
+									<classifier>site-sdk</classifier>
+									<type>zip</type>
+									<outputDirectory>${project.build.directory}/sites/jdt-template-variables</outputDirectory>
+								</artifactItem>
 							</artifactItems>
 						</configuration>
 					</execution>
@@ -159,6 +167,10 @@
 									<url>file:///${project.build.directory}/sites/b2eclipse</url>
 								</repository>
 								<repository>
+									<id>jdt-template-variables</id>
+									<url>file:///${project.build.directory}/sites/jdt-template-variables</url>
+								</repository>
+								<repository>
 									<id>workspacemechanic</id>
 									<url>http://workspacemechanic.eclipselabs.org.codespot.com/git.update/mechanic</url>
 								</repository>
@@ -230,8 +242,9 @@
 								<!-- Checkstyle -->
 								<iu>net.sf.eclipsecs.feature.group</iu>
 
-								<!-- b2eclips (Willis Wizard) -->
+								<!-- Own Tooling-->
 								<iu>org.sourcepit.b2eclipse.sdk.feature.feature.group</iu>
+								<iu>org.sourcepit.jdt.template.variables.sdk.feature.feature.group</iu>
 
 								<!-- Easy Shell -->
 								<iu>com.tetrade.eclipse.plugins.easyshell.feature.feature.group</iu>

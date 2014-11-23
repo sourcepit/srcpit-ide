@@ -20,6 +20,14 @@
 		<distName>${project.artifactId}-${project.version}-${classifier}</distName>
 		<distDir>${project.build.directory}/${distName}</distDir>
 	</properties>
+	
+	<!-- repo to resolve parent pom from -->
+	<repositories>
+		<repository>
+			<id>srcpit-public</id>
+			<url>http://nexus.sourcepit.org/content/groups/public/</url>
+		</repository>
+	</repositories>
 
 	<build>
 		<plugins>

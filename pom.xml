@@ -59,6 +59,14 @@
 									<type>zip</type>
 									<outputDirectory>${project.build.directory}/sites/jdt-template-variables</outputDirectory>
 								</artifactItem>
+								<artifactItem>
+									<groupId>srcpit.modified</groupId>
+									<artifactId>m2e-code-quality-plugins</artifactId>
+									<version>1.0.0.201412050758</version>
+									<classifier>site</classifier>
+									<type>zip</type>
+									<outputDirectory>${project.build.directory}/sites/m2e-code-quality-plugins</outputDirectory>
+								</artifactItem>
 							</artifactItems>
 						</configuration>
 					</execution>
@@ -168,7 +176,9 @@
 								</repository>
 								<repository>
 									<id>m2e-checkstyle</id>
-									<url>http://m2e-code-quality.github.com/m2e-code-quality/site/latest/</url>
+									<!-- Workaround until https://github.com/m2e-code-quality/m2e-code-quality/issues/58 is fixed. -->
+									<!-- <url>http://m2e-code-quality.github.com/m2e-code-quality/site/latest/</url> -->
+									<url>file:///${project.build.directory}/sites/m2e-code-quality-plugins</url>
 								</repository>
 								<repository>
 									<id>b2eclipse</id>
@@ -250,7 +260,7 @@
 								<!-- Checkstyle -->
 								<iu>net.sf.eclipsecs.feature.group</iu>
 
-								<!-- Own Tooling-->
+								<!-- Own Tooling -->
 								<iu>org.sourcepit.b2eclipse.sdk.feature.feature.group</iu>
 								<iu>org.sourcepit.jdt.template.variables.sdk.feature.feature.group</iu>
 

@@ -20,7 +20,7 @@
 		<distName>${project.artifactId}-${project.version}-${classifier}</distName>
 		<distDir>${project.build.directory}/${distName}</distDir>
 	</properties>
-	
+
 	<!-- repo to resolve parent pom from -->
 	<repositories>
 		<repository>
@@ -101,6 +101,18 @@
 									<id>ajdt</id>
 									<!-- Currently there is no final release of AJDT for luna. -->
 									<url>http://download.eclipse.org/tools/ajdt/44/dev/update</url>
+								</repository>
+								<repository>
+									<id>scala-ide</id>
+									<url>http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site</url>
+								</repository>
+								<repository>
+									<id>sheled</id>
+									<url>http://sourceforge.net/projects/shelled/files/shelled/update/</url>
+								</repository>
+								<repository>
+									<id>jsontools</id>
+									<url>https://bitbucket.org/denmiroch/jsontools/src/default/JsonSite</url>
 								</repository>
 								<repository>
 									<id>subversive</id>
@@ -221,6 +233,12 @@
 								<iu>org.eclipse.pde.feature.group</iu>
 								<iu>org.eclipse.pde.source.feature.group</iu>
 
+								<!-- Scala IDE -->
+								<iu>org.scala-ide.sdt.feature.feature.group</iu>
+								<iu>org.scala-ide.sdt.source.feature.feature.group</iu>
+								<iu>org.scala-ide.sbt.feature.feature.group</iu>
+								<iu>org.scala-ide.sbt.source.feature.feature.group</iu>
+
 								<!-- WTP + m2e connectors -->
 								<iu>org.eclipse.wst.xml_ui.feature.feature.group</iu>
 								<iu>org.eclipse.jst.enterprise_ui.feature.feature.group</iu>
@@ -266,6 +284,15 @@
 
 								<!-- Easy Shell -->
 								<iu>com.tetrade.eclipse.plugins.easyshell.feature.feature.group</iu>
+								
+								<!-- SchellEd - Bash script editor -->
+								<iu>net.sourceforge.shelled.feature.group</iu>
+								
+								<!-- Ruby editor -->
+								<iu>org.eclipse.dltk.ruby.feature.group</iu>
+								
+								<!-- Json editor -->
+								<iu>org.sweetlemonade.eclipse.json.feature.feature.group</iu>
 							</installIUs>
 							<os>${os}</os>
 							<ws>${ws}</ws>

@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.sourcepit</groupId>
 		<artifactId>srcpit-parent</artifactId>
-		<version>15</version>
+		<version>21-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>srcpit-ide</artifactId>
@@ -58,14 +58,6 @@
 									<classifier>site-sdk</classifier>
 									<type>zip</type>
 									<outputDirectory>${project.build.directory}/sites/jdt-template-variables</outputDirectory>
-								</artifactItem>
-								<artifactItem>
-									<groupId>srcpit.modified</groupId>
-									<artifactId>m2e-code-quality-plugins</artifactId>
-									<version>1.0.0.201412050758</version>
-									<classifier>site</classifier>
-									<type>zip</type>
-									<outputDirectory>${project.build.directory}/sites/m2e-code-quality-plugins</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 						</configuration>
@@ -188,9 +180,11 @@
 								</repository>
 								<repository>
 									<id>m2e-checkstyle</id>
-									<!-- Workaround until https://github.com/m2e-code-quality/m2e-code-quality/issues/58 is fixed. -->
-									<!-- <url>http://m2e-code-quality.github.com/m2e-code-quality/site/latest/</url> -->
-									<url>file:///${project.build.directory}/sites/m2e-code-quality-plugins</url>
+									<url>http://m2e-code-quality.github.io/m2e-code-quality/site</url>
+								</repository>
+								<repository>
+									<id>m2e-scala</id>
+									<url>http://alchim31.free.fr/m2e-scala/update-site</url>
 								</repository>
 								<repository>
 									<id>b2eclipse</id>
@@ -233,11 +227,12 @@
 								<iu>org.eclipse.pde.feature.group</iu>
 								<iu>org.eclipse.pde.source.feature.group</iu>
 
-								<!-- Scala IDE -->
+								<!-- Scala IDE + m2e connector -->
 								<iu>org.scala-ide.sdt.feature.feature.group</iu>
 								<iu>org.scala-ide.sdt.source.feature.feature.group</iu>
 								<iu>org.scala-ide.sbt.feature.feature.group</iu>
 								<iu>org.scala-ide.sbt.source.feature.feature.group</iu>
+								<iu>org.maven.ide.eclipse.scala_feature.feature.group</iu>
 
 								<!-- WTP + m2e connectors -->
 								<iu>org.eclipse.wst.xml_ui.feature.feature.group</iu>
@@ -284,13 +279,13 @@
 
 								<!-- Easy Shell -->
 								<iu>com.tetrade.eclipse.plugins.easyshell.feature.feature.group</iu>
-								
+
 								<!-- SchellEd - Bash script editor -->
 								<iu>net.sourceforge.shelled.feature.group</iu>
-								
+
 								<!-- Ruby editor -->
 								<iu>org.eclipse.dltk.ruby.feature.group</iu>
-								
+
 								<!-- Json editor -->
 								<iu>org.sweetlemonade.eclipse.json.feature.feature.group</iu>
 							</installIUs>

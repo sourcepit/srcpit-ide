@@ -95,6 +95,10 @@
 									<url>http://download.eclipse.org/tools/ajdt/44/dev/update</url>
 								</repository>
 								<repository>
+									<id>testng</id>
+									<url>http://beust.com/eclipse</url>
+								</repository>
+								<repository>
 									<id>scala-ide</id>
 									<url>http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site</url>
 								</repository>
@@ -217,12 +221,13 @@
 								<iu>org.sonatype.m2e.sisu.feature.feature.group</iu>
 								<iu>org.sonatype.m2e.buildhelper.feature.feature.group</iu>
 
-								<!-- JDT + AJDT + PDE + m2e connectors -->
+								<!-- JDT + AJDT + TestNG + PDE + m2e connectors -->
 								<iu>org.eclipse.jdt.feature.group</iu>
 								<iu>org.eclipse.jdt.source.feature.group</iu>
 								<iu>org.jboss.tools.m2e.jdt.feature.feature.group</iu>
 								<iu>org.eclipse.ajdt.feature.group</iu>
 								<iu>org.eclipse.ajdt.source.feature.group</iu>
+								<iu>org.testng.eclipse.feature.group</iu>
 								<iu>org.maven.ide.eclipse.ajdt.feature.feature.group</iu>
 								<iu>org.eclipse.pde.feature.group</iu>
 								<iu>org.eclipse.pde.source.feature.group</iu>
@@ -339,8 +344,7 @@
 								<zip destfile="${project.build.directory}/${distName}.zip">
 									<zipfileset dir="${distDir}" prefix="${distName}" />
 								</zip>
-								<attachartifact file="${project.build.directory}/${distName}.zip" classifier="${classifier}"
-									type="zip" />
+								<attachartifact file="${project.build.directory}/${distName}.zip" classifier="${classifier}" type="zip" />
 							</target>
 						</configuration>
 					</execution>

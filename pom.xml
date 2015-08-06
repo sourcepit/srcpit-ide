@@ -54,7 +54,7 @@
 								<artifactItem>
 									<groupId>org.sourcepit</groupId>
 									<artifactId>jdt-template-variables</artifactId>
-									<version>0.2.0</version>
+									<version>0.3.0</version>
 									<classifier>site-sdk</classifier>
 									<type>zip</type>
 									<outputDirectory>${project.build.directory}/sites/jdt-template-variables</outputDirectory>

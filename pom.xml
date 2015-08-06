@@ -103,6 +103,10 @@
 									<url>http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site</url>
 								</repository>
 								<repository>
+									<id>goclipse</id>
+									<url>http://goclipse.github.io/releases/</url>
+								</repository>
+								<repository>
 									<id>sheled</id>
 									<url>http://sourceforge.net/projects/shelled/files/shelled/update/</url>
 								</repository>
@@ -132,11 +136,11 @@
 								</repository>
 								<repository>
 									<id>m2e-mavendev</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/mavendev/0.2.0/N/0.2.0.201408212130/</url>
+									<url>http://repo1.maven.org/maven2/.m2e/connectors/mavendev/0.4.0/N/LATEST/</url>
 								</repository>
 								<repository>
 									<id>m2e-sourcelookup</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/sourcelookup/1.1.0/N/LATEST/</url>
+									<url>http://repo1.maven.org/maven2/.m2e/connectors/sourcelookup/1.2.0/N/LATEST/</url>
 								</repository>
 								<repository>
 									<id>m2e-ajdt</id>
@@ -148,11 +152,11 @@
 								</repository>
 								<repository>
 									<id>m2e-egit</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-egit/0.14.0/N/0.14.0.201504071521/</url>
+									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-egit/0.14.0/N/LATEST/</url>
 								</repository>
 								<repository>
 									<id>m2e-tycho</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.8.0/N/LATEST/</url>
+									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.9.0/N/LATEST/</url>
 								</repository>
 								<repository>
 									<id>m2e-subversive</id>
@@ -172,7 +176,7 @@
 								</repository>
 								<repository>
 									<id>m2e-mavenarchiver</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-mavenarchiver/0.16.0/N/LATEST/</url>
+									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-mavenarchiver/0.17.0/N/LATEST/</url>
 								</repository>
 								<repository>
 									<id>m2e-plexus</id>
@@ -246,6 +250,9 @@
 								<iu>org.eclipse.jst.server_adapters.feature.feature.group</iu>
 								<iu>org.eclipse.jst.server_adapters.ext.feature.feature.group</iu>
 								<iu>org.eclipse.m2e.wtp.feature.feature.group</iu>
+
+								<!-- GoClipse -->
+								<iu>goclipse_feature.feature.group</iu>
 
 								<!-- EMF + EMF Diagram Editor -->
 								<iu>org.eclipse.emf.sdk.feature.group</iu>

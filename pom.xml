@@ -245,8 +245,8 @@
 								<iu>org.sonatype.m2e.egit.feature.feature.group</iu>
 
 								<!-- Subversive + m2e connectors -->
-								<iu>org.eclipse.team.svn.feature.group</iu>
-								<iu>org.eclipse.team.svn.source.feature.group</iu>
+								<iu>org.eclipse.team.svn.feature.group/2.0.4.I20150123-1700</iu>
+								<iu>org.eclipse.team.svn.source.feature.group/2.0.4.I20150123-1700</iu>
 								<iu>org.polarion.eclipse.team.svn.connector.feature.group</iu>
 								<iu>org.polarion.eclipse.team.svn.connector.sources.feature.group</iu>
 								<iu>org.polarion.eclipse.team.svn.connector.svnkit18.feature.group</iu>

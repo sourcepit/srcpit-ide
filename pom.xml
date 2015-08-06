@@ -123,10 +123,6 @@
 									<url>http://community.polarion.com/projects/subversive/download/eclipse/4.0/update-site/</url>
 								</repository>
 								<repository>
-									<id>subversive-integrations</id>
-									<url>http://community.polarion.com/projects/subversive/download/integrations/update-site/</url>
-								</repository>
-								<repository>
 									<id>checkstyle</id>
 									<url>http://eclipse-cs.sf.net/update</url>
 								</repository>
@@ -275,7 +271,6 @@
 								<iu>org.polarion.eclipse.team.svn.connector.sources.feature.group</iu>
 								<iu>org.polarion.eclipse.team.svn.connector.svnkit18.feature.group</iu>
 								<iu>org.polarion.eclipse.team.svn.connector.svnkit18.sources.feature.group</iu>
-								<iu>org.polarion.eclipse.team.svn.m2eclipse.feature.group</iu>
 								<iu>org.sonatype.m2e.subversive.feature.feature.group</iu>
 								<iu>com.basistech.m2e.code.quality.checkstyle.feature.feature.group</iu>
 

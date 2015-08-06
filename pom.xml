@@ -78,8 +78,8 @@
 							<destination>${distDir}</destination>
 							<repositories>
 								<repository>
-									<id>luna</id>
-									<url>http://download.eclipse.org/releases/luna</url>
+									<id>mars</id>
+									<url>http://download.eclipse.org/releases/mars</url>
 								</repository>
 								<repository>
 									<id>m2e</id>
@@ -91,16 +91,8 @@
 								</repository>
 								<repository>
 									<id>ajdt</id>
-									<!-- Currently there is no final release of AJDT for luna. -->
+									<!-- Currently there is no final release of AJDT for mars. -->
 									<url>http://download.eclipse.org/tools/ajdt/44/dev/update</url>
-								</repository>
-								<repository>
-									<id>testng</id>
-									<url>http://beust.com/eclipse</url>
-								</repository>
-								<repository>
-									<id>scala-ide</id>
-									<url>http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site</url>
 								</repository>
 								<repository>
 									<id>goclipse</id>
@@ -111,8 +103,8 @@
 									<url>http://sourceforge.net/projects/shelled/files/shelled/update/</url>
 								</repository>
 								<repository>
-									<id>jsontools</id>
-									<url>https://bitbucket.org/denmiroch/jsontools/src/default/JsonSite</url>
+									<id>eclipsejsonedit</id>
+									<url>https://sourceforge.net/projects/eclipsejsonedit/files/update</url>
 								</repository>
 								<repository>
 									<id>subversive</id>
@@ -187,10 +179,6 @@
 									<url>http://m2e-code-quality.github.io/m2e-code-quality/site</url>
 								</repository>
 								<repository>
-									<id>m2e-scala</id>
-									<url>http://alchim31.free.fr/m2e-scala/update-site</url>
-								</repository>
-								<repository>
 									<id>b2eclipse</id>
 									<url>file:///${project.build.directory}/sites/b2eclipse</url>
 								</repository>
@@ -221,23 +209,15 @@
 								<iu>org.sonatype.m2e.sisu.feature.feature.group</iu>
 								<iu>org.sonatype.m2e.buildhelper.feature.feature.group</iu>
 
-								<!-- JDT + AJDT + TestNG + PDE + m2e connectors -->
+								<!-- JDT + AJDT + PDE + m2e connectors -->
 								<iu>org.eclipse.jdt.feature.group</iu>
 								<iu>org.eclipse.jdt.source.feature.group</iu>
 								<iu>org.jboss.tools.m2e.jdt.feature.feature.group</iu>
 								<iu>org.eclipse.ajdt.feature.group</iu>
 								<iu>org.eclipse.ajdt.source.feature.group</iu>
-								<iu>org.testng.eclipse.feature.group</iu>
 								<iu>org.maven.ide.eclipse.ajdt.feature.feature.group</iu>
 								<iu>org.eclipse.pde.feature.group</iu>
 								<iu>org.eclipse.pde.source.feature.group</iu>
-
-								<!-- Scala IDE + m2e connector -->
-								<iu>org.scala-ide.sdt.feature.feature.group</iu>
-								<iu>org.scala-ide.sdt.source.feature.feature.group</iu>
-								<iu>org.scala-ide.sbt.feature.feature.group</iu>
-								<iu>org.scala-ide.sbt.source.feature.feature.group</iu>
-								<iu>org.maven.ide.eclipse.scala_feature.feature.group</iu>
 
 								<!-- WTP + m2e connectors -->
 								<iu>org.eclipse.wst.xml_ui.feature.feature.group</iu>
@@ -294,7 +274,7 @@
 								<iu>org.eclipse.dltk.ruby.feature.group</iu>
 
 								<!-- Json editor -->
-								<iu>org.sweetlemonade.eclipse.json.feature.feature.group</iu>
+								<iu>jsonedit-feature.feature.group</iu>
 							</installIUs>
 							<os>${os}</os>
 							<ws>${ws}</ws>

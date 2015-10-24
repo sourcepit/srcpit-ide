@@ -99,6 +99,10 @@
 									<url>http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site</url>
 								</repository>
 								<repository>
+									<id>Papyrus</id>
+									<url>http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/mars</url>
+								</repository>
+								<repository>
 									<id>goclipse</id>
 									<url>http://goclipse.github.io/releases/</url>
 								</repository>
@@ -247,7 +251,8 @@
 
 								<!-- EMF + EMF Diagram Editor -->
 								<iu>org.eclipse.emf.sdk.feature.group</iu>
-								<iu>org.eclipse.emf.ecoretools.sdk.feature.group</iu>
+								<iu>org.eclipse.papyrus.sdk.feature.feature.group</iu>
+								<iu>org.eclipse.papyrus.sdk.feature.source.feature.group</iu>
 
 								<!-- Window Builder -->
 								<iu>org.eclipse.wb.rcp.feature.feature.group</iu>
@@ -341,7 +346,8 @@
 								<zip destfile="${project.build.directory}/${distName}.zip">
 									<zipfileset dir="${distDir}" prefix="${distName}" />
 								</zip>
-								<attachartifact file="${project.build.directory}/${distName}.zip" classifier="${classifier}" type="zip" />
+								<attachartifact file="${project.build.directory}/${distName}.zip" classifier="${classifier}"
+									type="zip" />
 							</target>
 						</configuration>
 					</execution>

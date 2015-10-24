@@ -99,8 +99,8 @@
 									<url>http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site</url>
 								</repository>
 								<repository>
-									<id>Papyrus</id>
-									<url>http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/mars</url>
+									<id>ecoretools</id>
+									<url>http://download.eclipse.org/ecoretools/updates/releases/3.0.1/mars</url>
 								</repository>
 								<repository>
 									<id>goclipse</id>
@@ -251,8 +251,7 @@
 
 								<!-- EMF + EMF Diagram Editor -->
 								<iu>org.eclipse.emf.sdk.feature.group</iu>
-								<iu>org.eclipse.papyrus.sdk.feature.feature.group</iu>
-								<iu>org.eclipse.papyrus.sdk.feature.source.feature.group</iu>
+								<iu>org.eclipse.emf.ecoretools.sdk.feature.group</iu>
 
 								<!-- Window Builder -->
 								<iu>org.eclipse.wb.rcp.feature.feature.group</iu>

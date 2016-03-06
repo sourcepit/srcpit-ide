@@ -19,6 +19,7 @@
 		<classifier>${os}.${ws}.${arch}</classifier>
 		<distName>${project.artifactId}-${project.version}-${classifier}</distName>
 		<distDir>${project.build.directory}/${distName}</distDir>
+		<lombok.version>1.16.6</lombok.version>
 	</properties>
 
 	<!-- repo to resolve parent pom from -->
@@ -58,6 +59,23 @@
 									<classifier>site-sdk</classifier>
 									<type>zip</type>
 									<outputDirectory>${project.build.directory}/sites/jdt-template-variables</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+					<execution>
+						<id>fetch-lombok</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.projectlombok</groupId>
+									<artifactId>lombok</artifactId>
+									<version>${lombok.version}</version>
+									<outputDirectory>${distDir}</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 						</configuration>
@@ -300,6 +318,7 @@
 										<arg>-Xmx2048m</arg>
 										<arg>-XX:MaxPermSize=256m</arg>
 										<arg>-XX:+CMSClassUnloadingEnabled</arg>
+										<arg>-javaagent:lombok-${lombok.version}.jar</arg>
 									</args>
 								</vmArgs>
 							</eclipseIni>

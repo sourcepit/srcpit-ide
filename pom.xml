@@ -95,10 +95,6 @@
 									<url>http://download.eclipse.org/tools/ajdt/44/dev/update</url>
 								</repository>
 								<repository>
-									<id>scala-ide</id>
-									<url>http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site</url>
-								</repository>
-								<repository>
 									<id>goclipse</id>
 									<url>http://goclipse.github.io/releases/</url>
 								</repository>
@@ -183,10 +179,6 @@
 									<url>http://m2e-code-quality.github.io/m2e-code-quality/site</url>
 								</repository>
 								<repository>
-									<id>m2e-scala</id>
-									<url>http://alchim31.free.fr/m2e-scala/update-site</url>
-								</repository>
-								<repository>
 									<id>b2eclipse</id>
 									<url>file:///${project.build.directory}/sites/b2eclipse</url>
 								</repository>
@@ -197,6 +189,10 @@
 								<repository>
 									<id>workspacemechanic</id>
 									<url>http://workspacemechanic.eclipselabs.org.codespot.com/git.update/mechanic</url>
+								</repository>
+								<repository>
+									<id>yedit</id>
+									<url>http://dadacoalition.org/yedit</url>
 								</repository>
 							</repositories>
 							<installIUs>
@@ -226,13 +222,6 @@
 								<iu>org.maven.ide.eclipse.ajdt.feature.feature.group</iu>
 								<iu>org.eclipse.pde.feature.group</iu>
 								<iu>org.eclipse.pde.source.feature.group</iu>
-
-								<!-- Scala IDE + m2e connector -->
-								<iu>org.scala-ide.sdt.feature.feature.group</iu>
-								<iu>org.scala-ide.sdt.source.feature.feature.group</iu>
-								<iu>org.scala-ide.sbt.feature.feature.group</iu>
-								<iu>org.scala-ide.sbt.source.feature.feature.group</iu>
-								<iu>org.maven.ide.eclipse.scala_feature.feature.group</iu>
 
 								<!-- WTP + m2e connectors -->
 								<iu>org.eclipse.wst.xml_ui.feature.feature.group</iu>
@@ -290,6 +279,9 @@
 
 								<!-- Json editor -->
 								<iu>jsonedit-feature.feature.group</iu>
+
+								<!-- Yaml editor -->
+								<iu>org.dadacoalition.yedit.feature.feature.group</iu>
 							</installIUs>
 							<os>${os}</os>
 							<ws>${ws}</ws>

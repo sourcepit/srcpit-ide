@@ -209,6 +209,10 @@
 									<url>http://workspacemechanic.eclipselabs.org.codespot.com/git.update/mechanic</url>
 								</repository>
 								<repository>
+									<id>gradle</id>
+									<url>http://dist.springsource.com/release/TOOLS/gradle</url>
+								</repository>
+								<repository>
 									<id>yedit</id>
 									<url>http://dadacoalition.org/yedit</url>
 								</repository>
@@ -285,6 +289,9 @@
 								<!-- Own Tooling -->
 								<iu>org.sourcepit.b2eclipse.sdk.feature.feature.group</iu>
 								<iu>org.sourcepit.jdt.template.variables.sdk.feature.feature.group</iu>
+								
+								<!-- Gradle -->
+								<iu>org.springsource.ide.eclipse.gradle.feature.feature.group</iu>
 
 								<!-- Easy Shell -->
 								<iu>com.tetrade.eclipse.plugins.easyshell.feature.feature.group</iu>

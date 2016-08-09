@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.sourcepit</groupId>
 		<artifactId>srcpit-parent</artifactId>
-		<version>21-SNAPSHOT</version>
+		<version>21</version>
 	</parent>
 
 	<artifactId>srcpit-ide</artifactId>
@@ -19,7 +19,7 @@
 		<classifier>${os}.${ws}.${arch}</classifier>
 		<distName>${project.artifactId}-${project.version}-${classifier}</distName>
 		<distDir>${project.build.directory}/${distName}</distDir>
-		<lombok.version>1.16.6</lombok.version>
+		<lombok.version>1.16.10</lombok.version>
 	</properties>
 
 	<!-- repo to resolve parent pom from -->
@@ -96,8 +96,8 @@
 							<destination>${distDir}</destination>
 							<repositories>
 								<repository>
-									<id>mars</id>
-									<url>http://download.eclipse.org/releases/mars</url>
+									<id>neon</id>
+									<url>http://download.eclipse.org/releases/neon</url>
 								</repository>
 								<repository>
 									<id>m2e</id>
@@ -109,8 +109,8 @@
 								</repository>
 								<repository>
 									<id>ajdt</id>
-									<!-- Currently there is no final release of AJDT for mars. -->
-									<url>http://download.eclipse.org/tools/ajdt/44/dev/update</url>
+									<!-- Currently there is no final release of AJDT for neon. -->
+									<url>http://download.eclipse.org/tools/ajdt/46/dev/update</url>
 								</repository>
 								<repository>
 									<id>goclipse</id>
@@ -122,15 +122,15 @@
 								</repository>
 								<repository>
 									<id>eclipsejsonedit</id>
-									<url>https://sourceforge.net/projects/eclipsejsonedit/files/update</url>
+									<url>http://boothen.github.io/Json-Eclipse-Plugin/</url>
 								</repository>
 								<repository>
 									<id>subversive</id>
-									<url>http://download.eclipse.org/technology/subversive/2.0/update-site/</url>
+									<url>http://download.eclipse.org/technology/subversive/3.0/update-site/</url>
 								</repository>
 								<repository>
 									<id>subversive-connectors</id>
-									<url>http://community.polarion.com/projects/subversive/download/eclipse/4.0/update-site/</url>
+									<url>http://community.polarion.com/projects/subversive/download/eclipse/5.0/update-site/</url>
 								</repository>
 								<repository>
 									<id>checkstyle</id>
@@ -158,15 +158,11 @@
 								</repository>
 								<repository>
 									<id>m2e-egit</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-egit/0.14.0/N/0.14.0.201509090157/</url>
+									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-egit/0.14.0/N/LATEST/</url>
 								</repository>
 								<repository>
 									<id>m2e-tycho</id>
 									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.9.0/N/LATEST/</url>
-								</repository>
-								<repository>
-									<id>m2e-subversive</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-subversive/0.13.0/N/0.13.0.201302121311/</url>
 								</repository>
 								<repository>
 									<id>m2e-modello</id>
@@ -182,7 +178,7 @@
 								</repository>
 								<repository>
 									<id>m2e-mavenarchiver</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-mavenarchiver/0.17.0/N/LATEST/</url>
+									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-mavenarchiver/0.17.2/N/LATEST/</url>
 								</repository>
 								<repository>
 									<id>m2e-plexus</id>
@@ -205,12 +201,8 @@
 									<url>file:///${project.build.directory}/sites/jdt-template-variables</url>
 								</repository>
 								<repository>
-									<id>workspacemechanic</id>
-									<url>http://workspacemechanic.eclipselabs.org.codespot.com/git.update/mechanic</url>
-								</repository>
-								<repository>
 									<id>gradle</id>
-									<url>http://dist.springsource.com/release/TOOLS/gradle</url>
+									<url>http://download.eclipse.org/buildship/updates/e46/releases</url>
 								</repository>
 								<repository>
 									<id>yedit</id>
@@ -220,6 +212,9 @@
 							<installIUs>
 								<!-- Eclipse Platform -->
 								<iu>org.eclipse.platform.sdk</iu>
+								
+								<!-- Eclipse Market Place -->
+								<iu>org.eclipse.epp.mpc.feature.group</iu>
 
 								<!-- m2e -->
 								<iu>org.eclipse.m2e.feature.feature.group</iu>
@@ -234,6 +229,7 @@
 								<iu>org.sonatype.m2e.plexus.annotations.feature.feature.group</iu>
 								<iu>org.sonatype.m2e.sisu.feature.feature.group</iu>
 								<iu>org.sonatype.m2e.buildhelper.feature.feature.group</iu>
+								<iu>com.basistech.m2e.code.quality.checkstyle.feature.feature.group</iu>
 
 								<!-- JDT + AJDT + PDE + m2e connectors -->
 								<iu>org.eclipse.jdt.feature.group</iu>
@@ -260,9 +256,6 @@
 								<iu>org.eclipse.emf.sdk.feature.group</iu>
 								<iu>org.eclipse.emf.ecoretools.sdk.feature.group</iu>
 
-								<!-- Window Builder -->
-								<iu>org.eclipse.wb.rcp.feature.feature.group</iu>
-
 								<!-- eGit + m2e connectors -->
 								<iu>org.eclipse.egit.feature.group</iu>
 								<iu>org.eclipse.egit.source.feature.group</iu>
@@ -271,17 +264,13 @@
 								<iu>org.sonatype.m2e.egit.feature.feature.group</iu>
 
 								<!-- Subversive + m2e connectors -->
-								<iu>org.eclipse.team.svn.feature.group/2.0.4.I20150123-1700</iu>
-								<iu>org.eclipse.team.svn.source.feature.group/2.0.4.I20150123-1700</iu>
+								<iu>org.eclipse.team.svn.feature.group/3.0.5.I20160701-1700</iu>
+								<iu>org.eclipse.team.svn.source.feature.group/3.0.5.I20160701-1700</iu>
 								<iu>org.polarion.eclipse.team.svn.connector.feature.group</iu>
 								<iu>org.polarion.eclipse.team.svn.connector.sources.feature.group</iu>
 								<iu>org.polarion.eclipse.team.svn.connector.svnkit18.feature.group</iu>
 								<iu>org.polarion.eclipse.team.svn.connector.svnkit18.sources.feature.group</iu>
-								<iu>org.sonatype.m2e.subversive.feature.feature.group</iu>
-								<iu>com.basistech.m2e.code.quality.checkstyle.feature.feature.group</iu>
-
-								<!-- Workspace Mechanic -->
-								<iu>com.google.eclipse.mechanic.feature.group</iu>
+								<iu>org.eclipse.team.svn.m2e.feature.group/3.0.0.I20150529-1700</iu>
 
 								<!-- Checkstyle -->
 								<iu>net.sf.eclipsecs.feature.group</iu>
@@ -291,10 +280,7 @@
 								<iu>org.sourcepit.jdt.template.variables.sdk.feature.feature.group</iu>
 								
 								<!-- Gradle -->
-								<iu>org.springsource.ide.eclipse.gradle.feature.feature.group</iu>
-
-								<!-- Easy Shell -->
-								<iu>com.tetrade.eclipse.plugins.easyshell.feature.feature.group</iu>
+								<iu>org.eclipse.buildship.feature.group</iu>
 
 								<!-- SchellEd - Bash script editor -->
 								<iu>net.sourceforge.shelled.feature.group</iu>

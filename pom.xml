@@ -100,6 +100,10 @@
 									<url>http://download.eclipse.org/releases/neon</url>
 								</repository>
 								<repository>
+									<id>spring</id>
+									<url>http://dist.springsource.com/release/TOOLS/update/e4.6</url>
+								</repository>
+								<repository>
 									<id>m2e</id>
 									<url>http://download.eclipse.org/technology/m2e/releases</url>
 								</repository>
@@ -204,15 +208,11 @@
 									<id>gradle</id>
 									<url>http://download.eclipse.org/buildship/updates/e46/releases</url>
 								</repository>
-								<repository>
-									<id>yedit</id>
-									<url>http://dadacoalition.org/yedit</url>
-								</repository>
 							</repositories>
 							<installIUs>
 								<!-- Eclipse Platform -->
 								<iu>org.eclipse.platform.sdk</iu>
-								
+
 								<!-- Eclipse Market Place -->
 								<iu>org.eclipse.epp.mpc.feature.group</iu>
 
@@ -272,13 +272,29 @@
 								<iu>org.polarion.eclipse.team.svn.connector.svnkit18.sources.feature.group</iu>
 								<iu>org.eclipse.team.svn.m2e.feature.group/3.0.0.I20150529-1700</iu>
 
+								<!-- Spring IDE -->
+								<iu>org.springframework.ide.eclipse.feature.feature.group</iu>
+								<iu>org.springframework.ide.eclipse.feature.source.feature.group</iu>
+								<iu>org.springframework.ide.eclipse.boot.feature.feature.group</iu>
+								<iu>org.springframework.ide.eclipse.boot.feature.source.feature.group</iu>
+								<iu>org.springframework.ide.eclipse.autowire.feature.feature.group</iu>
+								<iu>org.springframework.ide.eclipse.autowire.feature.source.feature.group</iu>
+								<iu>org.springframework.ide.eclipse.maven.feature.feature.group</iu>
+								<iu>org.springframework.ide.eclipse.maven.feature.source.feature.group</iu>
+								<iu>org.springframework.ide.eclipse.security.feature.feature.group</iu>
+								<iu>org.springframework.ide.eclipse.security.feature.source.feature.group</iu>
+								<iu>org.springframework.ide.eclipse.data.feature.feature.group</iu>
+								<iu>org.springframework.ide.eclipse.data.feature.source.feature.group</iu>
+								<iu>org.springframework.ide.eclipse.ajdt.feature.feature.group</iu>
+								<iu>org.springframework.ide.eclipse.ajdt.feature.source.feature.group</iu>
+
 								<!-- Checkstyle -->
 								<iu>net.sf.eclipsecs.feature.group</iu>
 
 								<!-- Own Tooling -->
 								<iu>org.sourcepit.b2eclipse.sdk.feature.feature.group</iu>
 								<iu>org.sourcepit.jdt.template.variables.sdk.feature.feature.group</iu>
-								
+
 								<!-- Gradle -->
 								<iu>org.eclipse.buildship.feature.group</iu>
 
@@ -287,12 +303,6 @@
 
 								<!-- Ruby editor -->
 								<iu>org.eclipse.dltk.ruby.feature.group</iu>
-
-								<!-- Json editor -->
-								<iu>jsonedit-feature.feature.group</iu>
-
-								<!-- Yaml editor -->
-								<iu>org.dadacoalition.yedit.feature.feature.group</iu>
 							</installIUs>
 							<os>${os}</os>
 							<ws>${ws}</ws>

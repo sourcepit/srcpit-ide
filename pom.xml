@@ -104,6 +104,10 @@
 									<url>http://download.eclipse.org/technology/m2e/releases</url>
 								</repository>
 								<repository>
+									<id>spring</id>
+									<url>http://dist.springsource.com/release/TOOLS/update/e4.6</url>
+								</repository>
+								<repository>
 									<id>egit</id>
 									<url>http://download.eclipse.org/egit/updates</url>
 								</repository>
@@ -246,6 +250,9 @@
 
 								<!-- WindowBuilder -->
 								<iu>org.eclipse.wb.rcp.feature.feature.group</iu>
+
+								<!-- Spring IDE Core -->
+								<iu>org.springframework.ide.eclipse.feature.feature.group</iu>
 
 								<!-- GoClipse -->
 								<iu>goclipse_feature.feature.group</iu>

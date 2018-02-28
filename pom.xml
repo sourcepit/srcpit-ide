@@ -19,7 +19,7 @@
 		<classifier>${os}.${ws}.${arch}</classifier>
 		<distName>${project.artifactId}-${project.version}-${classifier}</distName>
 		<distDir>${project.build.directory}/${distName}</distDir>
-		<lombok.version>1.16.12</lombok.version>
+		<lombok.version>1.16.20</lombok.version>
 	</properties>
 
 	<!-- repo to resolve parent pom from -->
@@ -96,8 +96,8 @@
 							<destination>${distDir}</destination>
 							<repositories>
 								<repository>
-									<id>neon</id>
-									<url>http://download.eclipse.org/releases/neon</url>
+									<id>oxygen</id>
+									<url>http://download.eclipse.org/releases/oxygen</url>
 								</repository>
 								<repository>
 									<id>m2e</id>
@@ -105,7 +105,7 @@
 								</repository>
 								<repository>
 									<id>spring</id>
-									<url>http://dist.springsource.com/release/TOOLS/update/e4.6</url>
+									<url>http://dist.springsource.com/release/TOOLS/update/e4.7</url>
 								</repository>
 								<repository>
 									<id>egit</id>
@@ -114,19 +114,11 @@
 								<repository>
 									<id>ajdt</id>
 									<!-- Currently there is no final release of AJDT for neon. -->
-									<url>http://download.eclipse.org/tools/ajdt/46/dev/update</url>
-								</repository>
-								<repository>
-									<id>goclipse</id>
-									<url>http://goclipse.github.io/releases/</url>
+									<url>http://download.eclipse.org/tools/ajdt/47/dev/update</url>
 								</repository>
 								<repository>
 									<id>shelled</id>
-									<url>http://download.eclipse.org/technology/dltk/updates-dev/5.6/</url>
-								</repository>
-								<repository>
-									<id>jsonedit</id>
-									<url>http://boothen.github.io/Json-Eclipse-Plugin/</url>
+									<url>http://download.eclipse.org/technology/dltk/updates-dev/5.9/</url>
 								</repository>
 								<repository>
 									<id>subversive</id>
@@ -136,10 +128,6 @@
 									<id>subversive-connectors</id>
 									<url>http://community.polarion.com/projects/subversive/download/eclipse/6.0/update-site/</url>
 								</repository>
-								<!-- <repository> -->
-								<!-- <id>checkstyle</id> -->
-								<!-- <url>http://eclipse-cs.sf.net/update</url> -->
-								<!-- </repository> -->
 								<repository>
 									<id>easy-shell</id>
 									<url>http://pluginbox.sourceforge.net/</url>
@@ -206,12 +194,13 @@
 								</repository>
 								<repository>
 									<id>gradle</id>
-									<url>http://download.eclipse.org/buildship/updates/e46/releases</url>
+									<url>http://download.eclipse.org/buildship/updates/e47/releases</url>
 								</repository>
 							</repositories>
 							<installIUs>
 								<!-- Eclipse Platform -->
-								<iu>org.eclipse.platform.sdk</iu>
+								<iu>org.eclipse.platform.ide</iu>
+								<iu>org.eclipse.platform.source.feature.group</iu>
 
 								<!-- Eclipse Market Place -->
 								<iu>org.eclipse.epp.mpc.feature.group</iu>
@@ -241,6 +230,7 @@
 								<iu>org.eclipse.pde.source.feature.group</iu>
 
 								<!-- WTP + m2e connectors -->
+								<iu>org.eclipse.wst.json_ui.feature.feature.group</iu>
 								<iu>org.eclipse.wst.xml_ui.feature.feature.group</iu>
 								<iu>org.eclipse.jst.enterprise_ui.feature.feature.group</iu>
 								<iu>org.eclipse.jst.server_ui.feature.feature.group</iu>
@@ -253,9 +243,6 @@
 
 								<!-- Spring IDE Core -->
 								<iu>org.springframework.ide.eclipse.feature.feature.group</iu>
-
-								<!-- GoClipse -->
-								<iu>goclipse_feature.feature.group</iu>
 
 								<!-- EMF + EMF Diagram Editor -->
 								<iu>org.eclipse.emf.sdk.feature.group</iu>
@@ -277,10 +264,6 @@
 								<iu>org.polarion.eclipse.team.svn.connector.svnkit18.sources.feature.group</iu>
 								<iu>org.eclipse.team.svn.m2e.feature.group</iu>
 
-								<!-- Checkstyle -->
-								<!-- <iu>net.sf.eclipsecs.feature.group</iu> -->
-								<!-- <iu>com.basistech.m2e.code.quality.checkstyle.feature.feature.group</iu> -->
-
 								<!-- Own Tooling -->
 								<iu>org.sourcepit.b2eclipse.sdk.feature.feature.group</iu>
 								<iu>org.sourcepit.jdt.template.variables.sdk.feature.feature.group</iu>
@@ -294,8 +277,6 @@
 								<!-- Ruby editor -->
 								<iu>org.eclipse.dltk.ruby.feature.group</iu>
 
-								<!-- JSON Editor -->
-								<iu>jsonedit-feature.feature.group</iu>
 							</installIUs>
 							<os>${os}</os>
 							<ws>${ws}</ws>

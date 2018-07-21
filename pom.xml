@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -13,12 +14,18 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<os>win32</os>
-		<ws>win32</ws>
-		<arch>x86_64</arch>
-		<classifier>${os}.${ws}.${arch}</classifier>
-		<distName>${project.artifactId}-${project.version}-${classifier}</distName>
-		<distDir>${project.build.directory}/${distName}</distDir>
+		<win.os>win32</win.os>
+		<win.ws>win32</win.ws>
+		<win.arch>x86_64</win.arch>
+		<win.classifier>${win.os}.${win.ws}.${win.arch}</win.classifier>
+		<win.distName>${project.artifactId}-${project.version}-${win.classifier}</win.distName>
+		<win.distDir>${project.build.directory}/${win.distName}</win.distDir>
+		<linux.os>linux</linux.os>
+		<linux.ws>gtx</linux.ws>
+		<linux.arch>x86_64</linux.arch>
+		<linux.classifier>${linux.os}.${linux.ws}.${linux.arch}</linux.classifier>
+		<linux.distName>${project.artifactId}-${project.version}-${linux.classifier}</linux.distName>
+		<linux.distDir>${project.build.directory}/${linux.distName}</linux.distDir>
 		<lombok.version>1.16.20</lombok.version>
 	</properties>
 
@@ -75,7 +82,7 @@
 									<groupId>org.projectlombok</groupId>
 									<artifactId>lombok</artifactId>
 									<version>${lombok.version}</version>
-									<outputDirectory>${distDir}</outputDirectory>
+									<outputDirectory>${win.distDir}</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 						</configuration>
@@ -88,220 +95,223 @@
 				<version>0.7.0</version>
 				<executions>
 					<execution>
+						<id>win</id>
 						<phase>prepare-package</phase>
 						<goals>
 							<goal>install</goal>
 						</goals>
 						<configuration>
-							<destination>${distDir}</destination>
-							<repositories>
-								<repository>
-									<id>oxygen</id>
-									<url>http://download.eclipse.org/releases/oxygen</url>
-								</repository>
-								<repository>
-									<id>m2e</id>
-									<url>http://download.eclipse.org/technology/m2e/releases</url>
-								</repository>
-								<repository>
-									<id>spring</id>
-									<url>http://dist.springsource.com/release/TOOLS/update/e4.7</url>
-								</repository>
-								<repository>
-									<id>egit</id>
-									<url>http://download.eclipse.org/egit/updates</url>
-								</repository>
-								<repository>
-									<id>ajdt</id>
-									<!-- Currently there is no final release of AJDT for neon. -->
-									<url>http://download.eclipse.org/tools/ajdt/47/dev/update</url>
-								</repository>
-								<repository>
-									<id>shelled</id>
-									<url>http://download.eclipse.org/technology/dltk/updates-dev/5.9/</url>
-								</repository>
-								<repository>
-									<id>subversive</id>
-									<url>http://download.eclipse.org/technology/subversive/4.0/update-site/</url>
-								</repository>
-								<repository>
-									<id>subversive-connectors</id>
-									<url>http://community.polarion.com/projects/subversive/download/eclipse/6.0/update-site/</url>
-								</repository>
-								<repository>
-									<id>easy-shell</id>
-									<url>http://pluginbox.sourceforge.net/</url>
-								</repository>
-								<repository>
-									<id>m2e-mavendev</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/mavendev/0.4.0/N/LATEST/</url>
-								</repository>
-								<repository>
-									<id>m2e-sourcelookup</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/sourcelookup/1.2.0/N/LATEST/</url>
-								</repository>
-								<repository>
-									<id>m2e-ajdt</id>
-									<url>http://dist.springsource.org/release/AJDT/configurator</url>
-								</repository>
-								<repository>
-									<id>m2e-jdt</id>
-									<url>http://download.jboss.org/jbosstools/updates/m2e-extensions/m2e-jdt-compiler</url>
-								</repository>
-								<repository>
-									<id>m2e-egit</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-egit/0.15.0/N/LATEST/</url>
-								</repository>
-								<repository>
-									<id>m2e-tycho</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.9.0/N/LATEST/</url>
-								</repository>
-								<repository>
-									<id>m2e-modello</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-modello/0.16.0/N/LATEST/</url>
-								</repository>
-								<repository>
-									<id>m2e-antlr</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-antlr/0.15.0/N/0.15.0.201405281449/</url>
-								</repository>
-								<repository>
-									<id>m2e-buildhelper</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-buildhelper/0.15.0/N/0.15.0.201405280027/</url>
-								</repository>
-								<repository>
-									<id>m2e-mavenarchiver</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-mavenarchiver/0.17.2/N/LATEST/</url>
-								</repository>
-								<repository>
-									<id>m2e-plexus</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-plexus/0.15.0/N/LATEST/</url>
-								</repository>
-								<repository>
-									<id>m2e-sisu</id>
-									<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-sisu/0.15.0/N/LATEST/</url>
-								</repository>
-								<repository>
-									<id>m2e-checkstyle</id>
-									<url>http://m2e-code-quality.github.io/m2e-code-quality/site</url>
-								</repository>
-								<repository>
-									<id>b2eclipse</id>
-									<url>file:///${project.build.directory}/sites/b2eclipse</url>
-								</repository>
-								<repository>
-									<id>jdt-template-variables</id>
-									<url>file:///${project.build.directory}/sites/jdt-template-variables</url>
-								</repository>
-								<repository>
-									<id>gradle</id>
-									<url>http://download.eclipse.org/buildship/updates/e47/releases</url>
-								</repository>
-							</repositories>
-							<installIUs>
-								<!-- Eclipse Platform -->
-								<iu>org.eclipse.platform.ide</iu>
-								<iu>org.eclipse.platform.source.feature.group</iu>
-
-								<!-- Eclipse Market Place -->
-								<iu>org.eclipse.epp.mpc.feature.group</iu>
-
-								<!-- m2e -->
-								<iu>org.eclipse.m2e.feature.feature.group</iu>
-								<iu>org.eclipse.m2e.sdk.feature.feature.group</iu>
-
-								<!-- m2e connectors (misc) -->
-								<iu>com.ifedorenko.m2e.mavendev.feature.feature.group</iu>
-								<iu>org.sonatype.tycho.m2e.feature.feature.group</iu>
-								<iu>org.sonatype.m2e.modello.feature.feature.group</iu>
-								<iu>org.sonatype.m2e.antlr.feature.feature.group</iu>
-								<iu>org.sonatype.m2e.mavenarchiver.feature.feature.group</iu>
-								<iu>org.sonatype.m2e.plexus.annotations.feature.feature.group</iu>
-								<iu>org.sonatype.m2e.sisu.feature.feature.group</iu>
-								<iu>org.sonatype.m2e.buildhelper.feature.feature.group</iu>
-
-								<!-- JDT + AJDT + PDE + m2e connectors -->
-								<iu>org.eclipse.jdt.feature.group</iu>
-								<iu>org.eclipse.jdt.source.feature.group</iu>
-								<iu>org.jboss.tools.m2e.jdt.feature.feature.group</iu>
-								<iu>org.eclipse.ajdt.feature.group</iu>
-								<iu>org.eclipse.ajdt.source.feature.group</iu>
-								<iu>org.maven.ide.eclipse.ajdt.feature.feature.group</iu>
-								<iu>org.eclipse.pde.feature.group</iu>
-								<iu>org.eclipse.pde.source.feature.group</iu>
-
-								<!-- WTP + m2e connectors -->
-								<iu>org.eclipse.wst.json_ui.feature.feature.group</iu>
-								<iu>org.eclipse.wst.xml_ui.feature.feature.group</iu>
-								<iu>org.eclipse.jst.enterprise_ui.feature.feature.group</iu>
-								<iu>org.eclipse.jst.server_ui.feature.feature.group</iu>
-								<iu>org.eclipse.jst.server_adapters.feature.feature.group</iu>
-								<iu>org.eclipse.jst.server_adapters.ext.feature.feature.group</iu>
-								<iu>org.eclipse.m2e.wtp.feature.feature.group</iu>
-
-								<!-- WindowBuilder -->
-								<iu>org.eclipse.wb.rcp.feature.feature.group</iu>
-
-								<!-- Spring IDE Core -->
-								<iu>org.springframework.ide.eclipse.feature.feature.group</iu>
-
-								<!-- EMF + EMF Diagram Editor -->
-								<iu>org.eclipse.emf.sdk.feature.group</iu>
-								<iu>org.eclipse.emf.ecoretools.sdk.feature.group</iu>
-
-								<!-- eGit + m2e connectors -->
-								<iu>org.eclipse.egit.feature.group</iu>
-								<iu>org.eclipse.egit.source.feature.group</iu>
-								<iu>org.eclipse.jgit.feature.group</iu>
-								<iu>org.eclipse.jgit.source.feature.group</iu>
-								<iu>org.sonatype.m2e.egit.feature.feature.group</iu>
-
-								<!-- Subversive + m2e connectors -->
-								<iu>org.eclipse.team.svn.feature.group</iu>
-								<iu>org.eclipse.team.svn.source.feature.group</iu>
-								<iu>org.polarion.eclipse.team.svn.connector.feature.group</iu>
-								<iu>org.polarion.eclipse.team.svn.connector.sources.feature.group</iu>
-								<iu>org.polarion.eclipse.team.svn.connector.svnkit18.feature.group</iu>
-								<iu>org.polarion.eclipse.team.svn.connector.svnkit18.sources.feature.group</iu>
-								<iu>org.eclipse.team.svn.m2e.feature.group</iu>
-
-								<!-- Own Tooling -->
-								<iu>org.sourcepit.b2eclipse.sdk.feature.feature.group</iu>
-								<iu>org.sourcepit.jdt.template.variables.sdk.feature.feature.group</iu>
-
-								<!-- Gradle -->
-								<iu>org.eclipse.buildship.feature.group</iu>
-
-								<!-- SchellEd - Bash script editor -->
-								<iu>org.eclipse.dltk.sh.sdk.feature.group</iu>
-
-								<!-- Ruby editor -->
-								<iu>org.eclipse.dltk.ruby.feature.group</iu>
-
-							</installIUs>
-							<os>${os}</os>
-							<ws>${ws}</ws>
-							<arch>${arch}</arch>
-							<roaming>true</roaming>
-							<eclipseIni>
-								<appArgs>
-									<prepend>
-										<arg>-pluginCustomization</arg>
-										<arg>plugin_customization.ini</arg>
-									</prepend>
-								</appArgs>
-								<vmArgs>
-									<args>
-										<arg>-Xms512m</arg>
-										<arg>-Xmx2048m</arg>
-										<arg>-XX:MaxPermSize=256m</arg>
-										<arg>-XX:+CMSClassUnloadingEnabled</arg>
-										<arg>-javaagent:lombok-${lombok.version}.jar</arg>
-									</args>
-								</vmArgs>
-							</eclipseIni>
+							<os>${win.os}</os>
+							<ws>${win.ws}</ws>
+							<arch>${win.arch}</arch>
+						</configuration>
+					</execution>
+					<execution>
+						<id>linux</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>install</goal>
+						</goals>
+						<configuration>
+							<os>${linux.os}</os>
+							<ws>${linux.ws}</ws>
+							<arch>${linux.arch}</arch>
 						</configuration>
 					</execution>
 				</executions>
+				<configuration>
+					<destination>${win.distDir}</destination>
+					<repositories>
+						<repository>
+							<id>photon</id>
+							<url>http://download.eclipse.org/releases/photon</url>
+						</repository>
+						<repository>
+							<id>m2e</id>
+							<url>http://download.eclipse.org/technology/m2e/releases</url>
+						</repository>
+						<repository>
+							<id>spring</id>
+							<url>http://download.springsource.com/release/TOOLS/update/e4.8/</url>
+						</repository>
+						<repository>
+							<id>rust</id>
+							<url>http://download.eclipse.org/corrosion/snapshots/</url>
+						</repository>
+						<repository>
+							<id>egit</id>
+							<url>http://download.eclipse.org/egit/updates</url>
+						</repository>
+						<repository>
+							<id>ajdt</id>
+							<!-- Currently there is no final release of AJDT for neon. -->
+							<url>http://download.eclipse.org/tools/ajdt/48/dev/update</url>
+						</repository>
+						<repository>
+							<id>shelled</id>
+							<url>http://download.eclipse.org/technology/dltk/updates-dev/5.9/</url>
+						</repository>
+						<repository>
+							<id>subversive</id>
+							<url>http://download.eclipse.org/technology/subversive/4.0/update-site/</url>
+						</repository>
+						<repository>
+							<id>subversive-connectors</id>
+							<url>http://community.polarion.com/projects/subversive/download/eclipse/6.0/update-site/</url>
+						</repository>
+						<repository>
+							<id>easy-shell</id>
+							<url>http://pluginbox.sourceforge.net/</url>
+						</repository>
+						<repository>
+							<id>m2e-ajdt</id>
+							<url>http://dist.springsource.org/release/AJDT/configurator</url>
+						</repository>
+						<repository>
+							<id>m2e-jdt</id>
+							<url>http://download.jboss.org/jbosstools/updates/m2e-extensions/m2e-jdt-compiler</url>
+						</repository>
+						<repository>
+							<id>m2e-egit</id>
+							<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-egit/0.15.1/N/LATEST/</url>
+						</repository>
+						<repository>
+							<id>m2e-tycho</id>
+							<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.9.0/N/LATEST/</url>
+						</repository>
+						<repository>
+							<id>m2e-buildhelper</id>
+							<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-buildhelper/0.15.0/N/0.15.0.201405280027/</url>
+						</repository>
+						<repository>
+							<id>m2e-mavenarchiver</id>
+							<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-mavenarchiver/0.17.2/N/LATEST/</url>
+						</repository>
+						<repository>
+							<id>m2e-plexus</id>
+							<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-plexus/0.15.0/N/LATEST/</url>
+						</repository>
+						<repository>
+							<id>m2e-sisu</id>
+							<url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-sisu/0.15.0/N/LATEST/</url>
+						</repository>
+						<repository>
+							<id>m2e-checkstyle</id>
+							<url>http://m2e-code-quality.github.io/m2e-code-quality/site</url>
+						</repository>
+						<repository>
+							<id>b2eclipse</id>
+							<url>file:///${project.build.directory}/sites/b2eclipse</url>
+						</repository>
+						<repository>
+							<id>jdt-template-variables</id>
+							<url>file:///${project.build.directory}/sites/jdt-template-variables</url>
+						</repository>
+						<repository>
+							<id>gradle</id>
+							<url>http://download.eclipse.org/buildship/updates/e47/releases</url>
+						</repository>
+					</repositories>
+					<installIUs>
+						<!-- Eclipse Platform -->
+						<iu>org.eclipse.platform.ide</iu>
+						<iu>org.eclipse.platform.source.feature.group</iu>
+
+						<!-- Eclipse Market Place -->
+						<iu>org.eclipse.epp.mpc.feature.group</iu>
+
+						<!-- m2e -->
+						<iu>org.eclipse.m2e.feature.feature.group</iu>
+						<iu>org.eclipse.m2e.sdk.feature.feature.group</iu>
+
+						<!-- m2e connectors (misc) -->
+						<iu>org.sonatype.tycho.m2e.feature.feature.group</iu>
+						<iu>org.sonatype.m2e.mavenarchiver.feature.feature.group</iu>
+						<iu>org.sonatype.m2e.plexus.annotations.feature.feature.group</iu>
+						<iu>org.sonatype.m2e.sisu.feature.feature.group</iu>
+						<iu>org.sonatype.m2e.buildhelper.feature.feature.group</iu>
+
+						<!-- JDT + AJDT + PDE + m2e connectors -->
+						<iu>org.eclipse.jdt.feature.group</iu>
+						<iu>org.eclipse.jdt.source.feature.group</iu>
+						<iu>org.jboss.tools.m2e.jdt.feature.feature.group</iu>
+						<iu>org.eclipse.ajdt.feature.group</iu>
+						<iu>org.eclipse.ajdt.source.feature.group</iu>
+						<iu>org.maven.ide.eclipse.ajdt.feature.feature.group</iu>
+						<iu>org.eclipse.pde.feature.group</iu>
+						<iu>org.eclipse.pde.source.feature.group</iu>
+
+						<!-- WTP + m2e connectors -->
+						<iu>org.eclipse.wst.json_ui.feature.feature.group</iu>
+						<iu>org.eclipse.wst.xml_ui.feature.feature.group</iu>
+						<iu>org.eclipse.jst.enterprise_ui.feature.feature.group</iu>
+						<iu>org.eclipse.jst.server_ui.feature.feature.group</iu>
+						<iu>org.eclipse.jst.server_adapters.feature.feature.group</iu>
+						<iu>org.eclipse.jst.server_adapters.ext.feature.feature.group</iu>
+						<iu>org.eclipse.m2e.wtp.feature.feature.group</iu>
+
+						<!-- WindowBuilder -->
+						<iu>org.eclipse.wb.rcp.feature.feature.group</iu>
+
+						<!-- Spring IDE Core -->
+						<iu>org.springframework.ide.eclipse.feature.feature.group</iu>
+
+						<!-- Rust IDE -->
+						<iu>org.eclipse.corrosion.feature.feature.group</iu>
+
+						<!-- EMF + EMF Diagram Editor -->
+						<iu>org.eclipse.emf.sdk.feature.group</iu>
+						<iu>org.eclipse.emf.ecoretools.sdk.feature.group</iu>
+
+						<!-- eGit + m2e connectors -->
+						<iu>org.eclipse.egit.feature.group</iu>
+						<iu>org.eclipse.egit.source.feature.group</iu>
+						<iu>org.eclipse.jgit.feature.group</iu>
+						<iu>org.eclipse.jgit.source.feature.group</iu>
+						<iu>org.sonatype.m2e.egit.feature.feature.group</iu>
+
+						<!-- Subversive + m2e connectors -->
+						<iu>org.eclipse.team.svn.feature.group</iu>
+						<iu>org.eclipse.team.svn.source.feature.group</iu>
+						<iu>org.polarion.eclipse.team.svn.connector.feature.group</iu>
+						<iu>org.polarion.eclipse.team.svn.connector.sources.feature.group</iu>
+						<iu>org.polarion.eclipse.team.svn.connector.svnkit18.feature.group</iu>
+						<iu>org.polarion.eclipse.team.svn.connector.svnkit18.sources.feature.group</iu>
+						<iu>org.eclipse.team.svn.m2e.feature.group</iu>
+
+						<!-- Own Tooling -->
+						<iu>org.sourcepit.b2eclipse.sdk.feature.feature.group</iu>
+						<!-- <iu>org.sourcepit.jdt.template.variables.sdk.feature.feature.group</iu> -->
+
+						<!-- Gradle -->
+						<iu>org.eclipse.buildship.feature.group</iu>
+
+						<!-- SchellEd - Bash script editor -->
+						<iu>org.eclipse.dltk.sh.sdk.feature.group</iu>
+
+						<!-- Ruby editor -->
+						<iu>org.eclipse.dltk.ruby.feature.group</iu>
+
+					</installIUs>
+					<roaming>true</roaming>
+					<eclipseIni>
+						<appArgs>
+							<prepend>
+								<arg>-pluginCustomization</arg>
+								<arg>plugin_customization.ini</arg>
+							</prepend>
+						</appArgs>
+						<vmArgs>
+							<args>
+								<arg>-Xms512m</arg>
+								<arg>-Xmx2048m</arg>
+								<arg>-XX:MaxPermSize=256m</arg>
+								<arg>-XX:+CMSClassUnloadingEnabled</arg>
+								<arg>-javaagent:lombok-${lombok.version}.jar</arg>
+							</args>
+						</vmArgs>
+					</eclipseIni>
+				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
@@ -314,7 +324,12 @@
 						</goals>
 						<configuration>
 							<target>
-								<copy file="${basedir}/src/main/resources/plugin_customization.ini" toDir="${distDir}" />
+								<copy
+									file="${basedir}/src/main/resources/plugin_customization.ini"
+									toDir="${win.distDir}" />
+								<copy
+									file="${basedir}/src/main/resources/plugin_customization.ini"
+									toDir="${linux.distDir}" />
 							</target>
 						</configuration>
 					</execution>
@@ -326,11 +341,22 @@
 						</goals>
 						<configuration>
 							<target>
-								<zip destfile="${project.build.directory}/${distName}.zip">
-									<zipfileset dir="${distDir}" prefix="${distName}" />
+								<zip
+									destfile="${project.build.directory}/${linux.distName}.zip">
+									<zipfileset dir="${linux.distDir}"
+										prefix="${linux.distName}" />
 								</zip>
-								<attachartifact file="${project.build.directory}/${distName}.zip" classifier="${classifier}"
-									type="zip" />
+								<attachartifact
+									file="${project.build.directory}/${linux.distName}.zip"
+									classifier="${linux.classifier}" type="zip" />
+								<zip
+									destfile="${project.build.directory}/${win.distName}.zip">
+									<zipfileset dir="${win.distDir}"
+										prefix="${win.distName}" />
+								</zip>
+								<attachartifact
+									file="${project.build.directory}/${win.distName}.zip"
+									classifier="${win.classifier}" type="zip" />
 							</target>
 						</configuration>
 					</execution>

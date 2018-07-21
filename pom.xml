@@ -84,6 +84,12 @@
 									<version>${lombok.version}</version>
 									<outputDirectory>${win.distDir}</outputDirectory>
 								</artifactItem>
+								<artifactItem>
+									<groupId>org.projectlombok</groupId>
+									<artifactId>lombok</artifactId>
+									<version>${lombok.version}</version>
+									<outputDirectory>${linux.distDir}</outputDirectory>
+								</artifactItem>
 							</artifactItems>
 						</configuration>
 					</execution>

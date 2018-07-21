@@ -19,13 +19,13 @@
 		<win.arch>x86_64</win.arch>
 		<win.classifier>${win.os}.${win.ws}.${win.arch}</win.classifier>
 		<win.distName>${project.artifactId}-${project.version}-${win.classifier}</win.distName>
-		<win.distDir>${project.build.directory}/${win.distName}</win.distDir>
+		<win.distDir>${project.build.directory}/eclipse/${win.classifier}</win.distDir>
 		<linux.os>linux</linux.os>
 		<linux.ws>gtx</linux.ws>
 		<linux.arch>x86_64</linux.arch>
 		<linux.classifier>${linux.os}.${linux.ws}.${linux.arch}</linux.classifier>
 		<linux.distName>${project.artifactId}-${project.version}-${linux.classifier}</linux.distName>
-		<linux.distDir>${project.build.directory}/${linux.distName}</linux.distDir>
+		<linux.distDir>${project.build.directory}/eclipse/${linux.classifier}</linux.distDir>
 		<lombok.version>1.16.20</lombok.version>
 	</properties>
 
@@ -92,35 +92,16 @@
 			<plugin>
 				<groupId>org.sourcepit.m2p2</groupId>
 				<artifactId>m2p2-director-maven-plugin</artifactId>
-				<version>0.7.0</version>
+				<version>0.9.0</version>
 				<executions>
 					<execution>
-						<id>win</id>
 						<phase>prepare-package</phase>
 						<goals>
 							<goal>install</goal>
 						</goals>
-						<configuration>
-							<os>${win.os}</os>
-							<ws>${win.ws}</ws>
-							<arch>${win.arch}</arch>
-						</configuration>
-					</execution>
-					<execution>
-						<id>linux</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>install</goal>
-						</goals>
-						<configuration>
-							<os>${linux.os}</os>
-							<ws>${linux.ws}</ws>
-							<arch>${linux.arch}</arch>
-						</configuration>
 					</execution>
 				</executions>
 				<configuration>
-					<destination>${win.distDir}</destination>
 					<repositories>
 						<repository>
 							<id>photon</id>
@@ -293,6 +274,18 @@
 						<iu>org.eclipse.dltk.ruby.feature.group</iu>
 
 					</installIUs>
+					<envs>
+						<env>
+							<os>${win.os}</os>
+							<ws>${win.ws}</ws>
+							<arch>${win.arch}</arch>
+						</env>
+						<envs>
+							<os>${linux.os}</os>
+							<ws>${linux.ws}</ws>
+							<arch>${linux.arch}</arch>
+						</envs>
+					</envs>
 					<roaming>true</roaming>
 					<eclipseIni>
 						<appArgs>

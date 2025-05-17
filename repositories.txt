@@ -1,0 +1,57 @@
+
+# Eclipse Releases
+https://download.eclipse.org/releases/2021-09/
+							
+# AJDT
+http://download.eclipse.org/tools/ajdt/410/dev/update
+
+# CDT
+https://download.eclipse.org/tools/cdt/releases/10.4
+
+# Gradle
+http://download.eclipse.org/buildship/updates/latest
+
+# EGIT
+https://download.eclipse.org/egit/updates
+
+# Subversive
+http://download.eclipse.org/technology/subversive/4.0/update-site/
+
+# Subversive-connectors
+http://community.polarion.com/projects/subversive/download/eclipse/6.0/update-site/
+
+# Spring Tools
+https://download.springsource.com/release/TOOLS/sts4/update/e4.21/
+
+# m2e-ajdt
+http://dist.springsource.org/release/AJDT/configurator
+
+# m2e-buildhelper
+https://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-buildhelper/0.15.0/N/0.15.0.201405280027/
+
+# m2e-egit
+https://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-egit/0.15.1/N/LATEST/
+
+# m2e-modello
+https://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-modello/0.16.0/N/LATEST/
+
+# m2e-plexus-annotations
+https://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-plexus/0.15.0/N/LATEST/
+
+# m2e sisu
+https://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-sisu/0.15.0/N/LATEST/
+
+# m2e-maven-dependency-plugin
+http://ianbrandt.github.io/m2e-maven-dependency-plugin/
+
+# dbeaver
+https://dbeaver.io/update/latest/
+
+# shelled
+http://download.eclipse.org/technology/dltk/updates-dev/5.9/
+
+# Eclipse Checkstyle Plugin
+https://checkstyle.org/eclipse-cs-update-site
+
+# Eclipse Checkstyle Plugin (m2e)
+https://m2e-code-quality.github.io/m2e-code-quality-p2-site/

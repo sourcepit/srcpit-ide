@@ -1,0 +1,98 @@
+# Eclipse Platform
+org.eclipse.platform.ide
+org.eclipse.platform.source.feature.group
+
+# Eclipse Market Place
+org.eclipse.epp.mpc.feature.group
+
+# Eclipe Modeling Framework (EMF)
+org.eclipse.emf.sdk.feature.group
+org.eclipse.emf.ecoretools.sdk.feature.group
+
+# Java EE Dev Tools & Server Adapters
+org.eclipse.jst.enterprise_ui.feature.feature.group
+org.eclipse.jst.server_ui.feature.feature.group
+org.eclipse.jst.server_adapters.feature.feature.group
+org.eclipse.jst.server_adapters.ext.feature.feature.group
+
+# Json, XML & XSD
+org.eclipse.wst.web_ui.feature.feature.group
+org.eclipse.xsd.sdk.feature.group
+
+# WindowBuilder
+org.eclipse.wb.rcp.feature.feature.group
+
+# Git
+org.eclipse.egit.feature.group
+org.eclipse.egit.source.feature.group
+org.sonatype.m2e.egit.feature.feature.group
+
+# Subversive
+org.eclipse.team.svn.feature.group
+org.eclipse.team.svn.source.feature.group
+org.polarion.eclipse.team.svn.connector.feature.group
+org.polarion.eclipse.team.svn.connector.sources.feature.group
+org.polarion.eclipse.team.svn.connector.svnkit18.feature.group
+org.polarion.eclipse.team.svn.connector.svnkit18.sources.feature.group
+org.eclipse.team.svn.m2e.feature.group
+
+# Buildship: Eclipse Plug-ins for Gradle
+org.eclipse.buildship.feature.group
+
+# Eclipse Maven Integration (m2e)
+org.eclipse.m2e.feature.feature.group
+org.eclipse.m2e.sdk.feature.feature.group
+org.sonatype.m2e.buildhelper.feature.feature.group
+org.sonatype.m2e.modello.feature.feature.group
+com.ianbrandt.tools.m2e.mdp.feature.feature.group
+org.sonatype.m2e.plexus.annotations.feature.feature.group
+org.sonatype.m2e.sisu.feature.feature.group
+
+# Java Development Tools (JDT)
+org.eclipse.jdt.feature.group
+org.eclipse.jdt.source.feature.group
+
+# AspectJ Development Tools (AJDT)
+org.eclipse.ajdt.feature.group
+org.eclipse.ajdt.source.feature.group
+org.maven.ide.eclipse.ajdt.feature.feature.group
+
+# Plug-in Development Tools
+org.eclipse.pde.feature.group
+org.eclipse.pde.source.feature.group
+
+# Spring IDE Core
+org.springframework.boot.ide.main.feature.feature.group
+org.springframework.ide.eclipse.boot.dash.feature.feature.group
+org.springframework.tooling.jdt.ls.commons
+org.springframework.tooling.ls.eclipse.commons
+org.springframework.tooling.ls.eclipse.gotosymbol
+org.springframework.tooling.boot.ls.feature.feature.group
+
+# Eclipse C/C++ Development Tools (CDT)
+org.eclipse.cdt.sdk.feature.group
+org.eclipse.cdt.build.crossgcc.feature.group
+org.eclipse.cdt.build.crossgcc.source.feature.group
+org.eclipse.cdt.autotools.feature.group
+org.eclipse.cdt.autotools.source.feature.group
+org.eclipse.cdt.cmake.source.feature.group
+org.eclipse.cdt.cmake.feature.group
+
+# Ruby editor
+org.eclipse.dltk.ruby.feature.group
+
+# DBeaver
+org.jkiss.dbeaver.ide.feature.feature.group
+
+# ShellEd
+org.eclipse.dltk.sh.feature.group
+
+# TM Terminal
+org.eclipse.tm.terminal.feature.feature.group
+
+# Eclipse Checkstyle Plugin
+net.sf.eclipsecs.feature.group
+net.sf.eclipsecs.source.feature.group
+
+# Eclipse Checkstyle Plugin (m2e connector)
+com.basistech.m2e.code.quality.checkstyle.feature.feature.group

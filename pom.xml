@@ -2,68 +2,145 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>org.sourcepit</groupId>
-		<artifactId>srcpit-parent</artifactId>
-		<version>24</version>
-	</parent>
-
+	<groupId>org.sourcepit</groupId>
 	<artifactId>srcpit-ide</artifactId>
 	<version>1.0-SNAPSHOT</version>
+
 	<packaging>pom</packaging>
 
 	<properties>
-		<win.os>win32</win.os>
-		<win.ws>win32</win.ws>
-		<win.arch>x86_64</win.arch>
-		<win.classifier>${win.os}.${win.ws}.${win.arch}</win.classifier>
-		<win.distName>${project.artifactId}-${project.version}-${win.classifier}</win.distName>
-		<win.distDir>${project.build.directory}/eclipse/${win.classifier}</win.distDir>
-		<linux.os>linux</linux.os>
-		<linux.ws>gtk</linux.ws>
-		<linux.arch>x86_64</linux.arch>
-		<linux.classifier>${linux.os}.${linux.ws}.${linux.arch}</linux.classifier>
-		<linux.distName>${project.artifactId}-${project.version}-${linux.classifier}</linux.distName>
-		<linux.distDir>${project.build.directory}/eclipse/${linux.classifier}</linux.distDir>
-		<lombok.version>1.18.12</lombok.version>
+		<target.amd64.os>linux</target.amd64.os>
+		<target.amd64.ws>gtk</target.amd64.ws>
+		<target.amd64.arch>x86_64</target.amd64.arch>
+		<target.amd64.classifier>${target.amd64.os}.${target.amd64.ws}.${target.amd64.arch}</target.amd64.classifier>
+		<destination-directory>${project.build.directory}/${target.amd64.classifier}/${project.artifactId}-${project.version}</destination-directory>
+		<lombok.version>1.18.22</lombok.version>
 	</properties>
 
-	<!-- repo to resolve parent pom from -->
-	<repositories>
-		<repository>
-			<id>srcpit-public</id>
-			<url>https://nexus.sourcepit.org/content/groups/public/</url>
-		</repository>
-	</repositories>
-
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.googlecode.maven-download-plugin</groupId>
+					<artifactId>download-maven-plugin</artifactId>
+					<version>1.6.7</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>3.0.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>3.2.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>3.2.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-release-plugin</artifactId>
+					<configuration>
+						<preparationGoals>clean</preparationGoals>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
+			<plugin>
+				<groupId>com.googlecode.maven-download-plugin</groupId>
+				<artifactId>download-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>install-eclipse</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>wget</goal>
+						</goals>
+						<configuration>
+							<url>https://rhlx01.hs-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2021-09/R/eclipse-java-2021-09-R-linux-gtk-x86_64.tar.gz</url>
+							<unpack>true</unpack>
+							<md5>97a194e40197dc1c9be649cc87b53810</md5>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>build ${project.artifactId}</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>./p2-director.sh</executable>
+							<arguments>
+								<argument>--eclipse-exe</argument>
+								<argument>${project.build.directory}/eclipse/eclipse</argument>
+								<argument>--repositories-file</argument>
+								<argument>repositories.txt</argument>
+								<argument>--installable-units-file</argument>
+								<argument>installable-units.txt</argument>
+								<argument>--destination-directory</argument>
+								<argument>${destination-directory}</argument>
+								<argument>--os</argument>
+								<argument>${target.amd64.os}</argument>
+								<argument>--ws</argument>
+								<argument>${target.amd64.ws}</argument>
+								<argument>--arch</argument>
+								<argument>${target.amd64.arch}</argument>
+							</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>mod eclipse.ini</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>./mod-eclipse-ini.sh</executable>
+							<arguments>
+								<argument>--eclipse-ini-file</argument>
+								<argument>${destination-directory}/eclipse.ini</argument>
+								<argument>--xms</argument>
+								<argument>256m</argument>
+								<argument>--xmx</argument>
+								<argument>2048m</argument>
+								<argument>--lombok-filename</argument>
+								<argument>lombok-${lombok.version}.jar</argument>
+							</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>package ${project.artifactId}</id>
+						<phase>package</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<workingDirectory>${project.build.directory}/${target.amd64.classifier}</workingDirectory>
+							<executable>tar</executable>
+							<arguments>
+								<argument>cfz</argument>
+								<argument>${project.build.directory}/${project.artifactId}-${project.version}-${target.amd64.classifier}.tgz</argument>
+								<argument>${project.artifactId}-${project.version}</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>prepare-local-update-sites</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>org.sourcepit</groupId>
-									<artifactId>b2eclipse</artifactId>
-									<version>0.4.0</version>
-									<classifier>site-sdk</classifier>
-									<type>zip</type>
-									<outputDirectory>${project.build.directory}/sites/b2eclipse</outputDirectory>
-								</artifactItem>
-							</artifactItems>
-						</configuration>
-					</execution>
-					<execution>
-						<id>fetch-lombok</id>
-						<phase>prepare-package</phase>
+						<id>add lombok</id>
+						<phase>compile</phase>
 						<goals>
 							<goal>copy</goal>
 						</goals>
@@ -73,13 +150,7 @@
 									<groupId>org.projectlombok</groupId>
 									<artifactId>lombok</artifactId>
 									<version>${lombok.version}</version>
-									<outputDirectory>${win.distDir}</outputDirectory>
-								</artifactItem>
-								<artifactItem>
-									<groupId>org.projectlombok</groupId>
-									<artifactId>lombok</artifactId>
-									<version>${lombok.version}</version>
-									<outputDirectory>${linux.distDir}</outputDirectory>
+									<outputDirectory>${destination-directory}</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 						</configuration>
@@ -87,257 +158,28 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.sourcepit.m2p2</groupId>
-				<artifactId>m2p2-director-maven-plugin</artifactId>
-				<version>0.9.0</version>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
 				<executions>
 					<execution>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>install</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<repositories>
-						<repository>
-							<id>2020-06</id>
-							<url>https://download.eclipse.org/releases/2020-06/</url>
-						</repository>
-						<repository>
-							<id>ajdt</id>
-							<url>http://download.eclipse.org/tools/ajdt/410/dev/update</url>
-						</repository>
-						<repository>
-							<id>cdt</id>
-							<url>https://download.eclipse.org/tools/cdt/releases/9.11</url>
-						</repository>
-						<repository>
-							<id>gradle</id>
-							<url>https://download.eclipse.org/buildship/updates/e413/releases/3.x</url>
-						</repository>
-						<repository>
-							<id>egit</id>
-							<url>https://download.eclipse.org/egit/updates</url>
-						</repository>
-						<repository>
-							<id>subversive</id>
-							<url>http://download.eclipse.org/technology/subversive/4.0/update-site/</url>
-						</repository>
-						<repository>
-							<id>subversive-connectors</id>
-							<url>http://community.polarion.com/projects/subversive/download/eclipse/6.0/update-site/</url>
-						</repository>
-						<repository>
-							<id>spring</id>
-							<url>https://download.springsource.com/release/TOOLS/sts4/update/e4.16/</url>
-						</repository>
-						<repository>
-							<id>m2e-ajdt</id>
-							<url>http://dist.springsource.org/release/AJDT/configurator</url>
-						</repository>
-						<repository>
-							<id>m2e-buildhelper</id>
-							<url>https://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-buildhelper/0.15.0/N/0.15.0.201405280027/</url>
-						</repository>
-						<repository>
-							<id>m2e-egit</id>
-							<url>https://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-egit/0.15.1/N/LATEST/</url>
-						</repository>
-						<repository>
-							<id>m2e-plexus</id>
-							<url>https://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-plexus/0.15.0/N/LATEST/</url>
-						</repository>
-						<repository>
-							<id>m2e-sisu</id>
-							<url>https://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-sisu/0.15.0/N/LATEST/</url>
-						</repository>
-						<repository>
-							<id>m2e-tycho</id>
-							<url>https://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.9.0/N/LATEST/</url>
-						</repository>
-						<repository>
-							<id>dbeaver</id>
-							<url>https://dbeaver.io/update/latest/</url>
-						</repository>
-						<repository>
-							<id>shelled</id>
-							<url>http://download.eclipse.org/technology/dltk/updates-dev/5.9/</url>
-						</repository>
-						<repository>
-							<id>b2eclipse</id>
-							<url>file:///${project.build.directory}/sites/b2eclipse</url>
-						</repository>
-					</repositories>
-					<installIUs>
-						<!-- Eclipse Platform -->
-						<iu>org.eclipse.platform.ide</iu>
-						<iu>org.eclipse.platform.source.feature.group</iu>
-
-						<!-- Eclipse Market Place -->
-						<iu>org.eclipse.epp.mpc.feature.group</iu>
-
-						<!-- Eclipe Modeling Framework (EMF) -->
-						<iu>org.eclipse.emf.sdk.feature.group</iu>
-						<iu>org.eclipse.emf.ecoretools.sdk.feature.group</iu>
-
-						<!-- Java EE Dev Tools & Server Adapters -->
-						<iu>org.eclipse.jst.enterprise_ui.feature.feature.group</iu>
-						<iu>org.eclipse.jst.server_ui.feature.feature.group</iu>
-						<iu>org.eclipse.jst.server_adapters.feature.feature.group</iu>
-						<iu>org.eclipse.jst.server_adapters.ext.feature.feature.group</iu>
-
-						<!-- Json, XML & XSD -->
-						<iu>org.eclipse.wst.web_ui.feature.feature.group</iu>
-						<iu>org.eclipse.xsd.sdk.feature.group</iu>
-
-						<!-- WindowBuilder -->
-						<iu>org.eclipse.wb.rcp.feature.feature.group</iu>
-
-						<!-- Git -->
-						<iu>org.eclipse.egit.feature.group</iu>
-						<iu>org.eclipse.egit.source.feature.group</iu>
-						<iu>org.sonatype.m2e.egit.feature.feature.group</iu>
-
-						<!-- Subversive -->
-						<iu>org.eclipse.team.svn.feature.group</iu>
-						<iu>org.eclipse.team.svn.source.feature.group</iu>
-						<iu>org.polarion.eclipse.team.svn.connector.feature.group</iu>
-						<iu>org.polarion.eclipse.team.svn.connector.sources.feature.group</iu>
-						<iu>org.polarion.eclipse.team.svn.connector.svnkit18.feature.group</iu>
-						<iu>org.polarion.eclipse.team.svn.connector.svnkit18.sources.feature.group</iu>
-						<iu>org.eclipse.team.svn.m2e.feature.group</iu>
-
-						<!-- Own Tooling -->
-						<iu>org.sourcepit.b2eclipse.sdk.feature.feature.group</iu>
-
-						<!-- Buildship: Eclipse Plug-ins for Gradle -->
-						<iu>org.eclipse.buildship.feature.group</iu>
-
-						<!-- Eclipse Maven Integration (m2e) -->
-						<iu>org.eclipse.m2e.feature.feature.group</iu>
-						<iu>org.eclipse.m2e.sdk.feature.feature.group</iu>
-						<iu>org.sonatype.m2e.buildhelper.feature.feature.group</iu>
-						<iu>org.sonatype.m2e.plexus.annotations.feature.feature.group</iu>
-						<iu>org.sonatype.m2e.sisu.feature.feature.group</iu>
-
-						<!-- Java Development Tools (JDT) -->
-						<iu>org.eclipse.jdt.feature.group</iu>
-						<iu>org.eclipse.jdt.source.feature.group</iu>
-
-						<!-- AspectJ Development Tools (AJDT) -->
-						<iu>org.eclipse.ajdt.feature.group</iu>
-						<iu>org.eclipse.ajdt.source.feature.group</iu>
-						<iu>org.maven.ide.eclipse.ajdt.feature.feature.group</iu>
-
-						<!-- Plug-in Development Tools -->
-						<iu>org.eclipse.pde.feature.group</iu>
-						<iu>org.eclipse.pde.source.feature.group</iu>
-						<iu>org.sonatype.tycho.m2e.feature.feature.group</iu>
-
-						<!-- Spring IDE Core -->
-						<iu>org.springframework.boot.ide.main.feature.feature.group</iu>
-						<iu>org.springframework.ide.eclipse.boot.dash.feature.feature.group</iu>
-						<iu>org.springframework.tooling.jdt.ls.commons</iu>
-						<iu>org.springframework.tooling.ls.eclipse.commons</iu>
-						<iu>org.springframework.tooling.ls.eclipse.gotosymbol</iu>
-						<iu>org.springframework.tooling.boot.ls.feature.feature.group</iu>
-
-						<!-- Eclipse C/C++ Development Tools (CDT) -->
-						<iu>org.eclipse.cdt.sdk.feature.group</iu>
-						<iu>org.eclipse.cdt.build.crossgcc.feature.group</iu>
-						<iu>org.eclipse.cdt.build.crossgcc.source.feature.group</iu>
-						<iu>org.eclipse.cdt.autotools.feature.group</iu>
-						<iu>org.eclipse.cdt.autotools.source.feature.group</iu>
-						<iu>org.eclipse.cdt.cmake.source.feature.group</iu>
-						<iu>org.eclipse.cdt.cmake.feature.group</iu>
-
-						<!-- Ruby editor -->
-						<iu>org.eclipse.dltk.ruby.feature.group</iu>
-
-						<!-- DBeaver -->
-						<iu>org.jkiss.dbeaver.ide.feature.feature.group</iu>
-
-						<!-- ShellEd -->
-						<iu>org.eclipse.dltk.sh.feature.group</iu>
-
-						<!-- TM Terminal -->
-						<iu>org.eclipse.tm.terminal.feature.feature.group</iu>
-					</installIUs>
-					<envs>
-						<env>
-							<os>${win.os}</os>
-							<ws>${win.ws}</ws>
-							<arch>${win.arch}</arch>
-						</env>
-						<envs>
-							<os>${linux.os}</os>
-							<ws>${linux.ws}</ws>
-							<arch>${linux.arch}</arch>
-						</envs>
-					</envs>
-					<roaming>true</roaming>
-					<eclipseIni>
-						<appArgs>
-							<prepend>
-								<arg>-pluginCustomization</arg>
-								<arg>plugin_customization.ini</arg>
-							</prepend>
-						</appArgs>
-						<vmArgs>
-							<args>
-								<arg>-Dosgi.requiredJavaVersion=1.8</arg>
-								<arg>-Dosgi.instance.area.default=@user.home/eclipse-workspace</arg>
-								<arg>-XX:+UseG1GC</arg>
-								<arg>-XX:+UseStringDeduplication</arg>
-								<arg>-Xms256m</arg>
-								<arg>-Xmx2048m</arg>
-								<arg>--add-modules=ALL-SYSTEM</arg>
-								<arg>-javaagent:lombok-${lombok.version}.jar</arg>
-							</args>
-						</vmArgs>
-					</eclipseIni>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-plugin_customization.ini</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<copy file="${basedir}/src/main/resources/plugin_customization.ini" toDir="${win.distDir}" />
-								<copy file="${basedir}/src/main/resources/plugin_customization.ini" toDir="${linux.distDir}" />
-							</target>
-						</configuration>
-					</execution>
-					<execution>
-						<id>zip-dist</id>
+						<id>attach artifacts</id>
 						<phase>package</phase>
 						<goals>
-							<goal>run</goal>
+							<goal>attach-artifact</goal>
 						</goals>
 						<configuration>
-							<target>
-								<zip destfile="${project.build.directory}/${linux.distName}.zip">
-									<zipfileset dir="${linux.distDir}" prefix="${linux.distName}" />
-								</zip>
-								<attachartifact file="${project.build.directory}/${linux.distName}.zip"
-									classifier="${linux.classifier}" type="zip" />
-								<zip destfile="${project.build.directory}/${win.distName}.zip">
-									<zipfileset dir="${win.distDir}" prefix="${win.distName}" />
-								</zip>
-								<attachartifact file="${project.build.directory}/${win.distName}.zip"
-									classifier="${win.classifier}" type="zip" />
-							</target>
+							<artifacts>
+								<artifact>
+									<file>${project.build.directory}/${project.artifactId}-${project.version}-${target.amd64.classifier}.tgz</file>
+									<classifier>${target.amd64.classifier}</classifier>
+									<type>tgz</type>
+								</artifact>
+							</artifacts>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 		</plugins>
 	</build>
+
 </project>
